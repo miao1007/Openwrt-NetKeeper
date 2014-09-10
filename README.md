@@ -1,4 +1,15 @@
 Openwrt-NetKeeper
 =================
 
-A Plugin for NetKeeper PPPOE, 这是重庆地区的Netkeeper的拨号插件，没有心跳，教程见[这里](http://www.right.com.cn/forum/thread-141979-1-1.html)
+这是重庆地区的Netkeeper的拨号插件，没有心跳，教程见[这里](http://www.right.com.cn/forum/thread-141979-1-1.html)
+
+说明
+-----------------
+* src为源码目录，用于不同平台的交叉编译器能编译出适合该CPU的代码
+* trunk为成品，现在我只有HG255D的成品，如果你编译成功了，可以fork我
+
+
+感谢如下同学
+-----------------
+* 无私制作HG255D镜像的同学，我也找不到引用源了
+* 研究闪讯的浙江/江苏前辈
