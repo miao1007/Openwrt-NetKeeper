@@ -12,12 +12,12 @@ Openwrt-NetKeeper
 -----------------
 1. 下载与配置适合你的gcc编译器
   * 去OP官网下载GCC,[点我](http://downloads.openwrt.org.cn/PandoraBox/)进入
-  * 自己找到你的路由器的型号，比如ralink ，不同CPU不能混用 ，然后找package里面的叫做“OpenWrt-Toolchain-你的CPU-for-mipsel_r2-gcc-4.6...”这个包 ， 我这里优待下HG255D，发下HG255D的GCC[地址](http://downloads.openwrt.org.cn/PandoraBox/ralink/rt305x/packages/OpenWrt-Toolchain-ralink-for-mipsel_r2-gcc-4.6-linaro_uClibc-0.9.33.2.tar.bz2)
+  * 自己找到你的路由器的型号，比如ralink ，不同CPU不能混用 ，然后找package里面的叫做类似“OpenWrt-Toolchain-你的CPU-for-mipsel_r2-gcc-4.6...”这个包 
   * 解压到任意地方
-  * 设置openwrt交叉编译环境,方法
 
 2. 下载源码
   * `git clone https://github.com/miao1007/Openwrt-NetKeeper.git`
+  * 打开文本编辑器，修改src/sxplugin.c里面的gcc文件路径
   * `cd Openwrt-NetKeeper/src`
   * `git clone https://github.com/squadette/pppd.git`
   * `make`
