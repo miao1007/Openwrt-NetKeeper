@@ -28,15 +28,22 @@ Openwrt-NetKeeper
 4. 配置路由
   * `ssh root@192.168.1.1`
   * `vi /etc/config/network`
-  * 添加代码：  
-     config interface 'NetKeeper'  
-        option proto 'pppoe'  
-        option ifname 'eth2.2（可能是eth0.2，反正就是wan口）'  
-        option pppd_options 'plugin sxplugin.so'  
-        option username '手机号'  
-        option password '密码'  
-        option metric '0'  
-  * 插网线就可以
+  * 添加代码： 
+#### 配置路由
+
+然后配置的是WAN口，添加如下代码:
+		
+	config interface 'NetKeeper'
+        option proto 'pppoe'
+        option ifname 'eth2.2（可能是eth0.2，反正就是wan口）'
+        option pppd_options 'plugin sxplugin.so'
+        option username '手机号'
+        option password '密码'
+        option metric '0'
+    
+    
+
+####  插网线，路由器对好时间就可以了
 
 感谢如下同学
 -----------------
