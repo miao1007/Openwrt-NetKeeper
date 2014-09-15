@@ -28,10 +28,9 @@ Openwrt-NetKeeper
 4. 配置路由
   * `ssh root@192.168.1.1`
   * `vi /etc/config/network`
-  * 添加代码： 
-#### 配置路由
 
-然后配置的是WAN口，添加如下代码:
+
+我要配置的是WAN口，需要添加如下代码:
 		
 	config interface 'NetKeeper'
         option proto 'pppoe'
@@ -43,7 +42,7 @@ Openwrt-NetKeeper
     
     
 
-####  插网线，路由器对好时间就可以了
+插网线，路由器对好时间就可以了
 
 感谢如下同学
 -----------------
