@@ -1,5 +1,5 @@
 #Openwrt-NetKeeper
-这是重庆地区的Netkeeper的拨号插件，没有心跳，详细教程见[这里](http://www.right.com.cn/forum/thread-141979-1-1.html)
+这是重庆地区的Netkeeper的路由器拨号插件，没有心跳，详细教程见[这里](http://www.right.com.cn/forum/thread-141979-1-1.html)
 
 ###Download
 * <b>Source code</b>:
@@ -49,8 +49,24 @@
 5. ifup your NetKeeper interface in Luci
 
 ##Acknowledgements
-* 无私制作HG255D镜像的同学，我也找不到引用源了
-* 研究闪讯的重邮/浙江/江苏前辈
+* [NETKEEPER ON WINDOWS](http://www.purpleroc.com/html/507231.html)
+* [CQUPT NETKEEPER](http://bbs.cqupt.edu.cn/nForum/#!article/Unix_Linux/13624)
 
 ##Developed By
 Leon - miao1007@gmail.com
+
+##License
+
+    Copyright 2013,2014 miao1007@gmail.com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
