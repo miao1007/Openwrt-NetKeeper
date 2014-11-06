@@ -20,7 +20,7 @@
 		cd Openwrt-NetKeeper/src
 		git clone https://github.com/squadette/pppd.git
 		
-4. edit /src/makefile, chnage the defalut GCC location to your GCC location
+4. edit /src/makefile, chnage the defalut GCC location to your GCC‘s location
 
 5. run `make` in terminal
 
