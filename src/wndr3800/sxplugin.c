@@ -63,8 +63,8 @@ static void getPIN(byte *userName, byte *PIN)
     memcpy(beforeMD5,timeByte,4);//array_copy
     info("1.<%s>",beforeMD5);
 
-    //TODO:change the length of "11" if you are not using a phone number acount
-    memcpy(beforeMD5 + 4 , userName , 11);
+    //add userName into calculate
+    memcpy(beforeMD5 + 4 , userName , strcspn(userName,"@"));
     info("2.<%s>",beforeMD5);
 
     strcat(beforeMD5,RADIUS);//string_copy
