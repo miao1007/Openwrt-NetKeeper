@@ -1,38 +1,56 @@
+/***************************************************************************
+* Copyright 2013,2014 miao1007@gmail.com
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+* *************************************************************************
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <pppd/pppd.h>
-#include <pppd/md5.h>
+//TODO : you may obtaion it by git clone https://github.com/squadette/pppd.git
+#include "pppd/pppd/pppd.h"
+#include "pppd/pppd/md5.h"
 
 typedef unsigned char byte;
-
-char pppd_version[] = "2.4.5";
+//TODO : change the version here
+char pppd_version[] = "2.4.7";
 
 static char saveuser[MAXNAMELEN] = {0};
 static char savepwd[MAXSECRETLEN] = {0};
 
 static void getPIN(byte *userName, byte *PIN) 
 {
-    int i,j;//循环变量
-    long timedivbyfive;//时间除以五
-    time_t timenow;//当前时间，从time()获得
-    byte RADIUS[17];//凑位字符,16char+'\0'
-    byte timeByte[4];//时间 div 5
-    MD5_CTX md5;//MD5结构体
-    byte afterMD5[16];//MD5输出
-    byte MD501H[2]; //MD5前两位
+    int i,j;
+    byte temp[32];
+    long timedivbyfive;
+    time_t timenow;//Linux Stamp
+    byte RADIUS[16];
+    byte timeByte[4];//time encryption from Linux Stamp
+    MD5_CTX md5;//MD5 class from pppd/md5.h
+    byte afterMD5[16];
+    byte MD501H[2];
     byte MD501[3];
-    byte timeHash[4]; //时间div5经过第一次转后后的值
-    byte temp[32]; //第一次转换时所用的临时数组
-    byte PIN27[6]; //PIN的2到7位，由系统时间转换
+
+    byte timeHash[4]; //time encryption from timeByte
+    byte PIN27[6]; //time encryption from timeHash
 
     //code
     info("sxplugin : using cqxinliradius002");
     strcpy(RADIUS, "cqxinliradius002");
     timenow = time(NULL);
     info("-------------------------------------");
-    info("timenow(Hex)=%x\n",timenow);//这里是debug测试用的，你把这个时间输入到PC版的拨号器，就能够和真正的账号进行对比
+    info("timenow(Hex)=%x\n",timenow);
     timedivbyfive = timenow / 5;
   
     for(i = 0; i < 4; i++) {
@@ -40,27 +58,29 @@ static void getPIN(byte *userName, byte *PIN)
     }
     //beforeMD5
     info("Begin : beforeMD5");
-    //byte* beforeMD5=malloc(strlen(timeByte)+strlen(userName)+strlen(RADIUS)+1);//beforeMD5={时间加密}+{用户}+{RADIUS}+'\0';
-    byte beforeMD5[32]={0};
-    //memcpy(beforeMD5,timeByte,4);//{时间加密}，这个memcpy不知道为什么在有的包上不能用，所以我换成sprintf了
-    sprintf(beforeMD5,"%c%c%c%c",timeByte[0],timeByte[1],timeByte[2],timeByte[3]);
+    //beforeMD5={time encryption}+{user name}+{RADIUS}+'\0';default length is 31
+    byte* beforeMD5=malloc(strlen(timeByte)+strlen(userName)+strlen(RADIUS)+1);
+    memcpy(beforeMD5,timeByte,4);//array_copy
     info("1.<%s>",beforeMD5);
-    strcat(beforeMD5,userName);//{用户}
+
+    //add userName into calculate
+    memcpy(beforeMD5 + 4 , userName , strcspn(userName,"@"));
     info("2.<%s>",beforeMD5);
-    strcat(beforeMD5,RADIUS);//{RADIUS}+'\0'
+
+    strcat(beforeMD5,RADIUS);//string_copy
     info("3.<%s>",beforeMD5);
-    info("4.length=<%d>",strlen(beforeMD5));//理论为31
+    info("4.length=<%d>",strlen(beforeMD5));
     info("End : beforeMD5");
     //afterMD5
     info("Begin : afterMD5");
     MD5_Init(&md5);
     MD5_Update (&md5, beforeMD5, strlen(beforeMD5));
-    MD5_Final (afterMD5, &md5);//生成16位的md5
-    //info("1.Md516(Hex)=<_>");
-    MD501H[0] = afterMD5[0] >>4& 0xF;//计算32位的第一位
-    MD501H[1] = afterMD5[0] & 0xF;//计算32位的第二位
-    info("2.MD5use_1=<%2x>",MD501H[0] );
-    info("3.MD5use_2=<%2x>",MD501H[1] );
+    free(beforeMD5);
+    MD5_Final (afterMD5, &md5);//generate MD5 sum
+    MD501H[0] = afterMD5[0] >>4& 0xF;//get MD5[0]
+    MD501H[1] = afterMD5[0] & 0xF;//get MD5[1]
+    info("1.MD5use_1=<%2x>",MD501H[0] );
+    info("2.MD5use_2=<%2x>",MD501H[1] );
     info("End : afterMD5");
     sprintf(MD501,"%x%x",MD501H[0],MD501H[1]);
     //PIN27
@@ -90,8 +110,8 @@ static void getPIN(byte *userName, byte *PIN)
             PIN27[i]++;
         }
     }
-    //PIN,2+6+2+11,realname
-    PIN[0] = '\r';//R,N
+    //PIN
+    PIN[0] = '\r';
     PIN[1] = '\n';
 
     memcpy(PIN+2, PIN27, 6);
@@ -99,8 +119,7 @@ static void getPIN(byte *userName, byte *PIN)
     PIN[8] = MD501[0];
     PIN[9] = MD501[1];
 
-    strcpy(PIN+10, userName);//
-    info("username=<%s>",PIN);
+    strcpy(PIN+10, userName);
     info("-------------------------------------");
 }
 
@@ -121,7 +140,7 @@ void plugin_init(void)
     info("sxplugin : init");
     strcpy(saveuser,user);
     strcpy(savepwd,passwd);
-    pap_modifyusername(user, saveuser);//(21,11)
+    pap_modifyusername(user, saveuser);
     info("sxplugin : passwd loaded"); 
     pap_check_hook=check;
     chap_check_hook=check;
