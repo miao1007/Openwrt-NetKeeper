@@ -2,9 +2,9 @@
 这是重庆地区的Netkeeper的路由器拨号插件，没有心跳，详细教程见[这里](http://www.right.com.cn/forum/thread-141979-1-1.html)
 
 ###Download
-* <b>Source code</b>:
+* **Source code**:
 	Source code are available in /src
-* <b>Trunk</b>: Compiled code are available for
+* **Trunk**: Compiled library are available for
 	* Huawei HG255D
 	* Netgear WNDR3800
 
@@ -12,7 +12,7 @@
 ###How to complie the plugin for your platform
 1. Download the [Lastest GCC](http://downloads.openwrt.org/snapshots/trunk/)
 
-2. Unzip it to anywhere
+2. Unzip the GCC to anywhere
 
 3. git my source code
 
@@ -39,7 +39,7 @@
 		config interface 'NetKeeper'
         	option proto 'pppoe'
         	option ifname 'eth2.2（可能是eth0.2，反正就是wan口）'
-        	option pppd_options 'plugin 
+        	option pppd_options 'plugin sxplugin.so'
         	option username 'phone number'
         	option password 'xxxxx'
         	option metric '0'
