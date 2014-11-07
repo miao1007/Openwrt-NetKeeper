@@ -4,10 +4,6 @@
 ###Download
 * **Source code**:
 	Source code are available in /src
-* **Trunk**: Compiled library are available for
-	* Huawei HG255D
-	* Netgear WNDR3800
-
 
 ###How to complie the plugin for your platform
 1. Download the [Lastest GCC](http://downloads.openwrt.org/snapshots/trunk/)
