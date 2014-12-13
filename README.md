@@ -10,11 +10,6 @@
 
 2. Unzip the GCC to anywhere
 
-3. git my source code
-
-		git clone https://github.com/miao1007/Openwrt-NetKeeper.git
-		cd Openwrt-NetKeeper/src
-		git clone https://github.com/squadette/pppd.git
 		
 4. edit /src/makefile, chnage the defalut GCC location to your GCC‘s location
 
@@ -22,7 +17,7 @@
 
 3. Upload your "sxplugin.so"
 
-		scp  {your so's location}   root@192.168.1.1:/usr/bin/pppd/2.4.7
+		scp  {drag your so's location here}   root@192.168.1.1:/usr/bin/pppd/2.4.7
 
 4. Configure your router
 
@@ -34,7 +29,7 @@
 	
 		config interface 'NetKeeper'
         	option proto 'pppoe'
-        	option ifname 'eth2.2（可能是eth0.2，反正就是wan口）'
+        	option ifname 'eth0.2'
         	option pppd_options 'plugin sxplugin.so'
         	option username 'phone number'
         	option password 'xxxxx'
