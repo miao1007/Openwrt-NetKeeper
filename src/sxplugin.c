@@ -19,8 +19,8 @@
 #include <time.h>
 #include <string.h>
 //TODO : you may obtaion it by git clone https://github.com/squadette/pppd.git
-#include "pppd/pppd/pppd.h"
-#include "pppd/pppd/md5.h"
+#include "pppd.h"
+#include "md5.h"
 
 typedef unsigned char byte;
 //TODO : change the version here
