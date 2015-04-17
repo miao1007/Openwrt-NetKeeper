@@ -1,6 +1,8 @@
 #Openwrt-NetKeeper
 这是重庆地区的Netkeeper的路由器拨号插件，没有心跳，详细教程见[这里](http://www.right.com.cn/forum/thread-141979-1-1.html)
 
+you can see Heartbeat at <https://github.com/miao1007/android-netkeeper>
+
 ###Download
 * **Source code**:
 	Source code are available in /src
