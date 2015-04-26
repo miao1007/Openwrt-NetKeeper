@@ -19,7 +19,7 @@ you can see Heartbeat at <https://github.com/miao1007/android-netkeeper>
 
 3. Upload your "sxplugin.so"
 
-		scp  {drag your so's location here}   root@192.168.1.1:/usr/bin/pppd/2.4.7
+		scp  {drag your so's location here}   root@192.168.1.1:/usr/lib/pppd/2.4.7/
 
 4. Configure your router
 
