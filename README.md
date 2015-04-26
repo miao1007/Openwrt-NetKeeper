@@ -41,7 +41,7 @@ you can see Heartbeat at <https://github.com/miao1007/android-netkeeper>
 
 5. ifup your NetKeeper interface in Luci
 
-##TroubleShot
+##troubleshooting
 
 <https://github.com/miao1007/Openwrt-NetKeeper/wiki>
 
