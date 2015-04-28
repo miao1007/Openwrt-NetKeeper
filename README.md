@@ -7,19 +7,18 @@ you can see Heartbeat at <https://github.com/miao1007/android-netkeeper>
 * **Source code**:
 	Source code are available in /src
 
-###How to complie the plugin for your platform
+###Getting Start
 1. Download the [Lastest GCC](http://downloads.openwrt.org/snapshots/trunk/)
 
 2. Unzip the GCC to anywhere
-
 		
-4. edit /src/makefile, chnage the defalut GCC location to your GCC‘s location
+4. edit /src/makefile, change the defalut GCC location to your GCC‘s location
 
 5. run `make` in terminal
 
 3. Upload your "sxplugin.so"
 
-		scp  {drag your so's location here}   root@192.168.1.1:/usr/lib/pppd/2.4.7/
+		scp  {drag your `.so` file here}   root@192.168.1.1:/usr/lib/pppd/2.4.7/
 
 4. Configure your router
 
@@ -37,13 +36,14 @@ you can see Heartbeat at <https://github.com/miao1007/android-netkeeper>
         	option password 'xxxxx'
         	option metric '0'
     
-    
+5. sync your router's time.
 
-5. ifup your NetKeeper interface in Luci
+6. ifup your NetKeeper interface in Luci
 
-##troubleshooting
+##Troubleshooting
 
-<https://github.com/miao1007/Openwrt-NetKeeper/wiki>
+1. Search wiki before ask question <https://github.com/miao1007/Openwrt-NetKeeper/wiki>
+2. Submit new [issue](https://github.com/miao1007/Openwrt-NetKeeper/issues/new) with your Log in OpenWRT.
 
 ##Acknowledgements
 * [NETKEEPER ON WINDOWS](http://www.purpleroc.com/html/507231.html)
