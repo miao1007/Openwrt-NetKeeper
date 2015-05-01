@@ -45,8 +45,11 @@ static void getPIN(byte *userName, byte *PIN)
     byte timeHash[4]; //time encryption from timeByte
     byte PIN27[6]; //time encryption from timeHash
 
-    //code
-    info("sxplugin : using cqxinliradius002");
+    //TODO: change your radius here
+    /*
+    * ChongQing Netkeeper: cqxinliradius002
+    * WuHan E xin: hubtxinli01
+    **/
     strcpy(RADIUS, "cqxinliradius002");
     timenow = time(NULL);
     info("-------------------------------------");
