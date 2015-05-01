@@ -1,13 +1,20 @@
 #Openwrt-NetKeeper
-这是重庆地区的Netkeeper的路由器拨号插件，没有心跳，详细教程见[这里](http://www.right.com.cn/forum/thread-141979-1-1.html)
 
-you can see Heartbeat at <https://github.com/miao1007/android-netkeeper>
+
+###Overview
+
+这是Netkeeper的路由器拨号插件，没有心跳，详细介绍见[这里](http://www.right.com.cn/forum/thread-141979-1-1.html)
+
+心跳已经反编译出来了，不过应该是烂尾了，没时间移植了.... <https://github.com/miao1007/android-netkeeper>
+
 
 ###Download
 * **Source code**:
 	Source code are available in /src
 
 ###Getting Start
+1. Git clone and read the code.
+
 1. Download the [Lastest GCC](http://downloads.openwrt.org/snapshots/trunk/)
 
 2. Unzip the GCC to anywhere
