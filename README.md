@@ -3,23 +3,38 @@
 
 ###Overview
 
-这是Netkeeper的路由器拨号插件，没有心跳，详细介绍见[这里](http://www.right.com.cn/forum/thread-141979-1-1.html)
+这是Netkeeper的路由器拨号插件，没有心跳，支持重庆Netkeeper，武汉E信，杭州。详细介绍见[这里](http://www.right.com.cn/forum/thread-141979-1-1.html)
 
-心跳已经反编译出来了，不过应该是烂尾了，没时间移植了.... <https://github.com/miao1007/android-netkeeper>
+心跳已经反编译出来了，不过应该是烂尾了，没时间移植了（用脚本语言发套接字就可以）.... <https://github.com/miao1007/android-netkeeper>
 
 
-###Download
-* **Source code**:
-	Source code are available in /src
+###Before Start
+* Install a 64-bit Ubuntu on your PC or Virtual-Machine
+* Download the [Lastest GCC](http://downloads.openwrt.org/snapshots/trunk/)
+
+
 
 ###Getting Start
-1. Git clone and read the code.
 
-1. Download the [Lastest GCC](http://downloads.openwrt.org/snapshots/trunk/)
+1. Git clone and **read** the code.
 
 2. Unzip the GCC to anywhere
 		
-4. edit /src/makefile, change the defalut GCC location to your GCC‘s location
+4. edit /src/makefile, change the defalut `CC` and `-I`  to your GCC‘s location
+
+```
+#Get Lastest GCC in http://downloads.openwrt.org/snapshots/trunk/
+#This is a demo for Netgear WNDR3800(AR71XX)
+
+#TODO : Change the location for your GCC’s location
+CC=/home/leon/netkeeper/OpenWrt-Toolchain-ar71xx-for-mips_34kc-gcc-4.8-linaro_uClibc-0.9.33.2/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/bin/mips-openwrt-linux-gcc
+CFLAGS=-Os -Wall
+
+all:sxplugin.so
+
+sxplugin.so:
+$(CC) $(CFLAGS) sxplugin.c -fPIC -I/home/leon/netkeeper/OpenWrt-Toolchain-ar71xx-for-mips_34kc-gcc-4.8-linaro_uClibc-0.9.33.2/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include -shared -o sxplugin.so
+```
 
 5. run `make` in terminal
 
@@ -45,7 +60,7 @@
     
 5. sync your router's time.
 
-6. ifup your NetKeeper interface in Luci
+6. reconnect your NetKeeper interface in Luci
 
 ##Troubleshooting
 
