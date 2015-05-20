@@ -47,7 +47,8 @@ static void getPIN(byte *userName, byte *PIN)
 
     //TODO: change your radius here
     /*
-    * ChongQing Netkeeper(Tested on CQUPT): cqxinliradius002
+    * ChongQing Netkeeper: cqxinliradius002
+    * ChongQing Netkeeper(0094): xianxinli1radius
     * WuHan E xin: hubtxinli01
     * Hangzhou(Tested on HDU): singlenet01
     **/
