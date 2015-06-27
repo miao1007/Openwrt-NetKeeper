@@ -51,6 +51,7 @@ static void getPIN(byte *userName, byte *PIN)
     * ChongQing Netkeeper(0094): xianxinli1radius
     * WuHan E xin: hubtxinli01
     * Hangzhou(Tested on HDU): singlenet01
+    * NanChang: nanchang3.0
     **/
     strcpy(RADIUS, "cqxinliradius002");
     timenow = time(NULL);
@@ -81,6 +82,7 @@ static void getPIN(byte *userName, byte *PIN)
     MD5_Init(&md5);
     MD5_Update (&md5, beforeMD5, strlen(beforeMD5));
     free(beforeMD5);
+    beforeMD5=NULL;
     MD5_Final (afterMD5, &md5);//generate MD5 sum
     MD501H[0] = afterMD5[0] >>4& 0xF;//get MD5[0]
     MD501H[1] = afterMD5[0] & 0xF;//get MD5[1]
