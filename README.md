@@ -21,7 +21,7 @@ This is an algorithm(C/Linux) to generate the real username during PPPoE. I disa
 
 ###Before Start
 * Install a 64-bit Ubuntu on your PC or Virtual-Machine
-* Download the [Lastest GCC](http://downloads.openwrt.org/snapshots/trunk/)
+* Download the [Lastest GCC](https://github.com/miao1007/Openwrt-NetKeeper/wiki#2-%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BDgcc)
 
 
 
