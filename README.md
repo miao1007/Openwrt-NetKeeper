@@ -12,6 +12,9 @@ This is an algorithm(C/Linux) to generate the real username during PPPoE. I disa
 心跳已经通过Android版反编译出来了，不过应该是烂尾了，找工作没时间移植了（用脚本语言发套接字就可以）.... <https://github.com/miao1007/android-netkeeper>
 
 
+###How Does It Work
+![How does it work](mdassets/hownetkeeperwork.png)
+
 ###Features
 1. 算法非常有效率，基于位运行优化，嵌入式设备也能轻松运行；
 2. 可移植强，仅有的几个库文件在任何设备均可使用；
