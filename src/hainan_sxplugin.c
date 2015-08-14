@@ -93,7 +93,7 @@ int new_calc_pin(char *username, char *buffer) {
     pkey_buff++;
   }
   memcpy(pkey_buff, &second_hash, sizeof(u_short));
-  info("final_key: %x", key_buff);
+  info("final_key: %s", key_buff);
 
   for (i = 0; i < 4; i++) {
     j = 2 * i + 1;
