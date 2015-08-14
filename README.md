@@ -5,9 +5,9 @@
 
 This is an algorithm(C/Linux) to generate the real username during PPPoE. I disassembled the code from the Android version , modified it to run the algorithm on OpenWRT.
 
-这是一个基于OpenWRT的闪讯拨号算法的实现。通过对Android版的反编译，获得到了拨号流程，并把它移植到OpenWRT上运行，实现打破毒瘤电信垄断的效果。
+这是一个基于OpenWRT的闪讯拨号算法的实现。通过对Android版的反编译，获得到了拨号流程，并把它移植到OpenWRT上运行，~~实现打破毒瘤电信垄断的效果~~。
 
-详细介绍见[这里](http://www.right.com.cn/forum/thread-141979-1-1.html)
+论坛见[这里](http://www.right.com.cn/forum/thread-141979-1-1.html)
 
 心跳已经通过Android版反编译出来了，不过应该是烂尾了，找工作没时间移植了（用脚本语言发套接字就可以）.... <https://github.com/miao1007/android-netkeeper>
 
@@ -18,7 +18,7 @@ This is an algorithm(C/Linux) to generate the real username during PPPoE. I disa
 ###Features
 1. 算法非常有效率，基于位运行优化，嵌入式设备也能轻松运行；
 2. 可移植强，仅有的几个库文件在任何设备均可使用；
-2. 支持多地区登录，同时支持武汉E信，重庆，杭州，南昌(V18)地区的帐号登录，有更多需求的可以提issue；
+2. 支持多地区登录，同时支持武汉E信，重庆，杭州，南昌(V18)，海南地区的帐号登录，有更多需求的可以提issue；
 3. 自适应帐号长度，支持带后缀与不带后缀的运算；
 4. 支持原厂、PandoraBox。
 
