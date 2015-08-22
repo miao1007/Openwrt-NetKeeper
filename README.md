@@ -15,12 +15,19 @@ This is an algorithm(C/Linux) to generate the real username during PPPoE. I disa
 ###How Does It Work
 ![How does it work](mdassets/hownetkeeperwork.png)
 
+###Supported Province
+1. 武汉E信
+2. 重庆
+3. 杭州
+4. 南昌(V18)
+5. 海南
+6. 青海
+
 ###Features
 1. 算法非常有效率，基于位运行优化，嵌入式设备也能轻松运行；
 2. 可移植强，仅有的几个库文件在任何设备均可使用；
-2. 支持多地区登录，同时支持武汉E信，重庆，杭州，南昌(V18)，海南地区的帐号登录，有更多需求的可以提issue；
 3. 自适应帐号长度，支持带后缀与不带后缀的运算；
-4. 支持原厂、PandoraBox。
+4. 支持原厂OpenWrt、PandoraBox。
 
 ###Before Start
 * Install a 64-bit Ubuntu on your PC or Virtual-Machine
@@ -30,7 +37,7 @@ This is an algorithm(C/Linux) to generate the real username during PPPoE. I disa
 
 ###Getting Start
 
-1. Git clone and **read** the code. Remember to modify you radius in source code.
+1. Git clone and **read** the code. Remember to **modify your radius** in source code.
 
 2. Unzip the GCC to anywhere
 		
