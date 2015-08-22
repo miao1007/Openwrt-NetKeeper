@@ -37,11 +37,12 @@ static void getPIN(byte *userName, byte *PIN)
     * Hangzhou(Tested on HDU): singlenet01
     * NanChangV18: nanchang3.0
     * NanChangV12~V17: radius
+    * QingHai: qhtel@xiaoyuanyi
     **/
     strcpy(RADIUS, "cqxinliradius002");
     timenow = time(NULL);
     info("-------------------------------------");
-    info("timenow(Hex)=%x\n",timenow);
+    info("timenow(Hex)=%ßx\n",timenow);
     timedivbyfive = timenow / 5;
   
     for(i = 0; i < 4; i++) {
