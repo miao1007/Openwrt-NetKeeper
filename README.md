@@ -19,7 +19,7 @@ This is an algorithm(C/Linux) to generate the real username during PPPoE. I disa
 1. 武汉E信
 2. 重庆
 3. 杭州
-4. 南昌(V18)
+4. 南昌(V18~V32)
 5. 海南
 6. 青海
 
@@ -37,13 +37,14 @@ This is an algorithm(C/Linux) to generate the real username during PPPoE. I disa
 
 ###Getting Start
 
-1. Git clone and **read** the code. Remember to **modify your radius** in source code.
+1. Git clone and **read** the code. Remember to **modify TODO code** in source code.
 
 2. Unzip the GCC to anywhere
 		
 4. edit /src/makefile, change the defalut `CC` and `-I`  to your GCC‘s location
 
 ```
+##Sample code
 #Get Lastest GCC in http://downloads.openwrt.org/snapshots/trunk/
 #This is a demo for Netgear WNDR3800(AR71XX)
 
