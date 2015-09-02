@@ -107,6 +107,9 @@ static void getPIN(byte *userName, byte *PIN)
     }
     //PIN
     PIN[0] = '\r';
+    //TODO: Change code here
+    //NanChangV32: '1'
+    //Others: '\n'
     PIN[1] = '1';
 
     memcpy(PIN+2, PIN27, 6);
