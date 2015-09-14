@@ -13,7 +13,7 @@ char pppd_version[] = "2.4.7";
 static char saveuser[MAXNAMELEN] = {0};
 static char savepwd[MAXSECRETLEN] = {0};
 
-static void getPIN(byte *userName, byte *PIN) 
+static void getPIN(byte *userName, byte *PIN)
 {
     int i,j;
     byte temp[32];
@@ -37,13 +37,16 @@ static void getPIN(byte *userName, byte *PIN)
     * Hangzhou(Tested on HDU): singlenet01
     * NanChangV18: nanchang3.0
     * NanChangV12~V17: radius
+    * NanChangV29: nanchang3.0
+    * NanChangV32: jiangxi4.0
+    * QingHai: qhtel@xiaoyuanyi
     **/
-    strcpy(RADIUS, "cqxinliradius002");
+    strcpy(RADIUS, "jiangxi4.0");
     timenow = time(NULL);
     info("-------------------------------------");
-    info("timenow(Hex)=%x\n",timenow);
+    info("timenow(Hex)=%ßx\n",timenow);
     timedivbyfive = timenow / 5;
-  
+
     for(i = 0; i < 4; i++) {
         timeByte[i] = (byte)(timedivbyfive >> (8 * (3 - i)) & 0xFF);
     }
@@ -104,7 +107,10 @@ static void getPIN(byte *userName, byte *PIN)
     }
     //PIN
     PIN[0] = '\r';
-    PIN[1] = '\n';
+    //TODO: Change code here
+    //NanChangV32: '1'
+    //Others: '\n'
+    PIN[1] = '1';
 
     memcpy(PIN+2, PIN27, 6);
 
@@ -120,7 +126,7 @@ static int pap_modifyusername(char *user, char* passwd)
     byte PIN[MAXSECRETLEN] = {0};
     getPIN(saveuser, PIN);
     strcpy(user, PIN);
-    info("sxplugin : user  is <%s> ",user); 
+    info("sxplugin : user  is <%s> ",user);
 }
 
 static int check(){
@@ -133,7 +139,7 @@ void plugin_init(void)
     strcpy(saveuser,user);
     strcpy(savepwd,passwd);
     pap_modifyusername(user, saveuser);
-    info("sxplugin : passwd loaded"); 
+    info("sxplugin : passwd loaded");
     pap_check_hook=check;
     chap_check_hook=check;
 }
