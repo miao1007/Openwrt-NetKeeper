@@ -19,10 +19,11 @@ static void getPIN(byte *userName, byte *PIN)
     byte temp[32];
     long timedivbyfive;
     time_t timenow;//Linux Stamp
-    byte RADIUS[16];
+    byte RADIUS[32];
     byte timeByte[4];//time encryption from Linux Stamp
     MD5_CTX md5;//MD5 class from pppd/md5.h
     byte afterMD5[16];
+    byte beforeMD5[128];
     byte MD501H[2];
     byte MD501[3];
 
@@ -40,8 +41,9 @@ static void getPIN(byte *userName, byte *PIN)
     * NanChangV29: nanchang3.0
     * NanChangV32: jiangxi4.0
     * QingHai: qhtel@xiaoyuanyi
+    * hebei: hebeicncxinli002
     **/
-    strcpy(RADIUS, "jiangxi4.0");
+    strcpy(RADIUS, "hebeicncxinli002");
     timenow = time(NULL);
     info("-------------------------------------");
     info("timenow(Hex)=%ßx\n",timenow);
@@ -53,15 +55,16 @@ static void getPIN(byte *userName, byte *PIN)
     //beforeMD5
     info("Begin : beforeMD5");
     //beforeMD5={time encryption}+{user name}+{RADIUS}+'\0';default length is 31
-    byte* beforeMD5=malloc(strlen(timeByte)+strlen(userName)+strlen(RADIUS)+1);
     memcpy(beforeMD5,timeByte,4);//array_copy
     info("1.<%s>",beforeMD5);
 
     //add userName into calculate
-    memcpy(beforeMD5 + 4 , userName , strcspn(userName,"@"));
+    i = strcspn(userName,"@");
+    memcpy(beforeMD5 + 4 , userName , i);
     info("2.<%s>",beforeMD5);
 
-    strcat(beforeMD5,RADIUS);//string_copy
+    i = i + 4;
+    memcpy(beforeMD5 + i , RADIUS, 32);
     info("3.<%s>",beforeMD5);
     info("4.length=<%d>",strlen(beforeMD5));
     info("End : beforeMD5");
@@ -69,8 +72,6 @@ static void getPIN(byte *userName, byte *PIN)
     info("Begin : afterMD5");
     MD5_Init(&md5);
     MD5_Update (&md5, beforeMD5, strlen(beforeMD5));
-    free(beforeMD5);
-    beforeMD5=NULL;
     MD5_Final (afterMD5, &md5);//generate MD5 sum
     MD501H[0] = afterMD5[0] >>4& 0xF;//get MD5[0]
     MD501H[1] = afterMD5[0] & 0xF;//get MD5[1]
