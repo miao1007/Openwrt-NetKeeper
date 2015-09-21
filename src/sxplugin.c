@@ -42,6 +42,7 @@ static void getPIN(byte *userName, byte *PIN)
     * NanChangV32: jiangxi4.0
     * QingHai: qhtel@xiaoyuanyi
     * hebei: hebeicncxinli002
+    * ShanDong Mobile : shandongmobile13
     **/
     strcpy(RADIUS, "hebeicncxinli002");
     timenow = time(NULL);
