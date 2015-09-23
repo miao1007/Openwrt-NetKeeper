@@ -43,6 +43,10 @@ See more at [supported radius](https://github.com/miao1007/Openwrt-NetKeeper/blo
 
 1. Git clone and **read** the code. Remember to **modify TODO code** in source code.
 
+Version: [Here](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/sxplugin.c#L11)
+Radius: [Here](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/sxplugin.c#L33)
+Prefix: [Here](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/sxplugin.c#L112)
+
 2. Unzip the GCC to anywhere
 		
 4. edit /src/makefile, change the defalut `CC` and `-I`  to your GCC‘s location
