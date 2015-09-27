@@ -21,13 +21,17 @@ This is an algorithm(C/Linux) to generate the real username during PPPoE. I disa
 3. 杭州
 4. 南昌(V18~V32)
 5. 海南
-6. 青海
+6. 青海/新疆
+7. 河北
+8. 山东移动
+
+See more at [supported radius](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/sxplugin.c#L33)
 
 ###Features
 1. 算法非常有效率，基于位运行优化，嵌入式设备也能轻松运行；
 2. 可移植强，仅有的几个库文件在任何设备均可使用；
 3. 自适应帐号长度，支持带后缀与不带后缀的运算；
-4. 支持原厂OpenWrt、PandoraBox。
+4. 支持原厂OpenWrt、PandoraBox（但并不推荐）。
 
 ###Before Start
 * Install a 64-bit Ubuntu on your PC or Virtual-Machine
@@ -38,6 +42,10 @@ This is an algorithm(C/Linux) to generate the real username during PPPoE. I disa
 ###Getting Start
 
 1. Git clone and **read** the code. Remember to **modify TODO code** in source code.
+
+Version: [Here](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/sxplugin.c#L11)
+Radius: [Here](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/sxplugin.c#L33)
+Prefix: [Here](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/sxplugin.c#L112)
 
 2. Unzip the GCC to anywhere
 		
@@ -87,7 +95,7 @@ $(CC) $(CFLAGS) sxplugin.c -fPIC -I/home/leon/netkeeper/OpenWrt-Toolchain-ar71xx
 ##Troubleshooting
 
 1. Search wiki before ask question <https://github.com/miao1007/Openwrt-NetKeeper/wiki>
-2. Submit new [issue](https://github.com/miao1007/Openwrt-NetKeeper/issues/new) with your Log in OpenWRT.
+2. Submit new [issue](https://github.com/miao1007/Openwrt-NetKeeper/issues/new) with your log in OpenWRT.
 
 ##Acknowledgements
 * [NETKEEPER ON WINDOWS](http://www.purpleroc.com/html/507231.html)
@@ -98,4 +106,5 @@ Leon - <miao1007@gmail.com>
 
 ##License
 
-GPL
+1. GPL
+2. No **TAOBAO** use
