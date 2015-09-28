@@ -215,6 +215,7 @@ void main_loop(int argc, const char * argv[]) {
 }
 
 int main(int argc, const char * argv[]) {
+    fprintf(stdout, "WARRNING: Support for ShanXi Netkeeper temporary.\n");
     main_loop(argc, argv);
     return 0;
 }
