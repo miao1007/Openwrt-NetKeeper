@@ -13,16 +13,17 @@ char pppd_version[] = "2.4.7";
 static char saveuser[MAXNAMELEN] = {0};
 static char savepwd[MAXSECRETLEN] = {0};
 
-static void getPIN(byte *userName, byte *PIN) 
+static void getPIN(byte *userName, byte *PIN)
 {
     int i,j;
     byte temp[32];
     long timedivbyfive;
     time_t timenow;//Linux Stamp
-    byte RADIUS[16];
+    byte RADIUS[32];
     byte timeByte[4];//time encryption from Linux Stamp
     MD5_CTX md5;//MD5 class from pppd/md5.h
     byte afterMD5[16];
+    byte beforeMD5[128];
     byte MD501H[2];
     byte MD501[3];
 
@@ -37,28 +38,34 @@ static void getPIN(byte *userName, byte *PIN)
     * Hangzhou(Tested on HDU): singlenet01
     * NanChangV18: nanchang3.0
     * NanChangV12~V17: radius
+    * NanChangV29: nanchang3.0
+    * NanChangV32: jiangxi4.0
+    * QingHai: qhtel@xiaoyuanyi
+    * hebei: hebeicncxinli002
+    * ShanDong Mobile : shandongmobile13
     **/
-    strcpy(RADIUS, "cqxinliradius002");
+    strcpy(RADIUS, "hebeicncxinli002");
     timenow = time(NULL);
     info("-------------------------------------");
-    info("timenow(Hex)=%x\n",timenow);
+    info("timenow(Hex)=%ßx\n",timenow);
     timedivbyfive = timenow / 5;
-  
+
     for(i = 0; i < 4; i++) {
         timeByte[i] = (byte)(timedivbyfive >> (8 * (3 - i)) & 0xFF);
     }
     //beforeMD5
     info("Begin : beforeMD5");
     //beforeMD5={time encryption}+{user name}+{RADIUS}+'\0';default length is 31
-    byte* beforeMD5=malloc(strlen(timeByte)+strlen(userName)+strlen(RADIUS)+1);
     memcpy(beforeMD5,timeByte,4);//array_copy
     info("1.<%s>",beforeMD5);
 
     //add userName into calculate
-    memcpy(beforeMD5 + 4 , userName , strcspn(userName,"@"));
+    i = strcspn(userName,"@");
+    memcpy(beforeMD5 + 4 , userName , i);
     info("2.<%s>",beforeMD5);
 
-    strcat(beforeMD5,RADIUS);//string_copy
+    i = i + 4;
+    memcpy(beforeMD5 + i , RADIUS, 32);
     info("3.<%s>",beforeMD5);
     info("4.length=<%d>",strlen(beforeMD5));
     info("End : beforeMD5");
@@ -66,8 +73,6 @@ static void getPIN(byte *userName, byte *PIN)
     info("Begin : afterMD5");
     MD5_Init(&md5);
     MD5_Update (&md5, beforeMD5, strlen(beforeMD5));
-    free(beforeMD5);
-    beforeMD5=NULL;
     MD5_Final (afterMD5, &md5);//generate MD5 sum
     MD501H[0] = afterMD5[0] >>4& 0xF;//get MD5[0]
     MD501H[1] = afterMD5[0] & 0xF;//get MD5[1]
@@ -104,6 +109,9 @@ static void getPIN(byte *userName, byte *PIN)
     }
     //PIN
     PIN[0] = '\r';
+    //TODO: Change code here
+    //NanChangV32: '1'
+    //Others: '\n'
     PIN[1] = '\n';
 
     memcpy(PIN+2, PIN27, 6);
@@ -120,7 +128,7 @@ static int pap_modifyusername(char *user, char* passwd)
     byte PIN[MAXSECRETLEN] = {0};
     getPIN(saveuser, PIN);
     strcpy(user, PIN);
-    info("sxplugin : user  is <%s> ",user); 
+    info("sxplugin : user  is <%s> ",user);
 }
 
 static int check(){
@@ -133,7 +141,7 @@ void plugin_init(void)
     strcpy(saveuser,user);
     strcpy(savepwd,passwd);
     pap_modifyusername(user, saveuser);
-    info("sxplugin : passwd loaded"); 
+    info("sxplugin : passwd loaded");
     pap_check_hook=check;
     chap_check_hook=check;
 }
