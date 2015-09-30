@@ -5,7 +5,7 @@
 //TODO : you may obtaion it by git clone https://github.com/squadette/pppd.git
 #include "pppd.h"
 #include "md5.h"
-#define PREFIX1 '\n'
+#define PREFIX0 '\r'
 typedef unsigned char byte;
 //TODO : change the version here
 char pppd_version[] = "2.4.7";
