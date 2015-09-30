@@ -5,7 +5,27 @@
 //TODO : you may obtaion it by git clone https://github.com/squadette/pppd.git
 #include "pppd.h"
 #include "md5.h"
-
+//attention: typeof(RADIUS) == `const char []`
+//TODO: change your radius here
+/*
+* ChongQing Netkeeper: cqxinliradius002
+* ChongQing Netkeeper(0094): xianxinli1radius
+* WuHan E xin: hubtxinli01
+* Hangzhou(Tested on HDU): singlenet01
+* NanChangV18: nanchang3.0
+* NanChangV12~V17: radius
+* NanChangV29: nanchang3.0
+* NanChangV32: jiangxi4.0
+* QingHai: qhtel@xiaoyuanyi
+* hebei: hebeicncxinli002
+* ShanDong Mobile : shandongmobile13
+**/
+#define RADIUS "hebeicncxinli002"
+#define PREFIX0 '\r'
+//TODO: Change code here
+//NanChangV32: '1'
+//Others: '\n'
+#define PREFIX1 '\n'
 typedef unsigned char byte;
 //TODO : change the version here
 char pppd_version[] = "2.4.7";
@@ -19,32 +39,15 @@ static void getPIN(byte *userName, byte *PIN)
     byte temp[32];
     long timedivbyfive;
     time_t timenow;//Linux Stamp
-    byte RADIUS[32];
     byte timeByte[4];//time encryption from Linux Stamp
     MD5_CTX md5;//MD5 class from pppd/md5.h
     byte afterMD5[16];
-    byte beforeMD5[128];
+    byte beforeMD5[128] = {0};
     byte MD501H[2];
     byte MD501[3];
 
     byte timeHash[4]; //time encryption from timeByte
     byte PIN27[6]; //time encryption from timeHash
-
-    //TODO: change your radius here
-    /*
-    * ChongQing Netkeeper: cqxinliradius002
-    * ChongQing Netkeeper(0094): xianxinli1radius
-    * WuHan E xin: hubtxinli01
-    * Hangzhou(Tested on HDU): singlenet01
-    * NanChangV18: nanchang3.0
-    * NanChangV12~V17: radius
-    * NanChangV29: nanchang3.0
-    * NanChangV32: jiangxi4.0
-    * QingHai: qhtel@xiaoyuanyi
-    * hebei: hebeicncxinli002
-    * ShanDong Mobile : shandongmobile13
-    **/
-    strcpy(RADIUS, "hebeicncxinli002");
     timenow = time(NULL);
     info("-------------------------------------");
     info("timenow(Hex)=%ßx\n",timenow);
@@ -55,17 +58,17 @@ static void getPIN(byte *userName, byte *PIN)
     }
     //beforeMD5
     info("Begin : beforeMD5");
-    //beforeMD5={time encryption}+{user name}+{RADIUS}+'\0';default length is 31
     memcpy(beforeMD5,timeByte,4);//array_copy
     info("1.<%s>",beforeMD5);
 
-    //add userName into calculate
+    //locate character "@" in userName
     i = strcspn(userName,"@");
     memcpy(beforeMD5 + 4 , userName , i);
     info("2.<%s>",beforeMD5);
 
     i = i + 4;
-    memcpy(beforeMD5 + i , RADIUS, 32);
+    //beforeMD5={time encryption(4)}+{user name(11)}+{RADIUS}+'\0';default length in ChongQing is 31
+    memcpy(beforeMD5 + i , RADIUS, strlen(RADIUS));
     info("3.<%s>",beforeMD5);
     info("4.length=<%d>",strlen(beforeMD5));
     info("End : beforeMD5");
@@ -108,11 +111,8 @@ static void getPIN(byte *userName, byte *PIN)
         }
     }
     //PIN
-    PIN[0] = '\r';
-    //TODO: Change code here
-    //NanChangV32: '1'
-    //Others: '\n'
-    PIN[1] = '\n';
+    PIN[0] = PREFIX0;
+    PIN[1] = PREFIX1;
 
     memcpy(PIN+2, PIN27, 6);
 
