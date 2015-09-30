@@ -40,7 +40,7 @@ hangzhou_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"singlenet01"' -DPREFIX1="'\n'" -shared -o $@.so
 
 nanchang_sxplugin:
-	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"jiangxi4.0"' -DPREFIX1=''1'' -shared -o $@.so
+	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"jiangxi4.0"' -DPREFIX1="'1'" -shared -o $@.so
 
 qinghai_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"qhtel@xiaoyuanyi"' -DPREFIX1="'\n'" -shared -o $@.so
