@@ -43,28 +43,9 @@ See more at [supported radius](https://github.com/miao1007/Openwrt-NetKeeper/blo
 
 1. Git clone and **read** the code. Remember to **modify TODO code** in source code.
 
-Version: [Here](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/sxplugin.c#L11)
-Radius: [Here](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/sxplugin.c#L33)
-Prefix: [Here](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/sxplugin.c#L112)
-
-2. Unzip the GCC to anywhere
+1. Unzip the GCC to anywhere
 		
-4. edit /src/makefile, change the defalut `CC` and `-I`  to your GCC‘s location
-
-```
-##Sample code
-#Get Lastest GCC in http://downloads.openwrt.org/snapshots/trunk/
-#This is a demo for Netgear WNDR3800(AR71XX)
-
-#TODO : Change the location for your GCC’s location
-CC=/home/leon/netkeeper/OpenWrt-Toolchain-ar71xx-for-mips_34kc-gcc-4.8-linaro_uClibc-0.9.33.2/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/bin/mips-openwrt-linux-gcc
-CFLAGS=-Os -Wall
-
-all:sxplugin.so
-
-sxplugin.so:
-$(CC) $(CFLAGS) sxplugin.c -fPIC -I/home/leon/netkeeper/OpenWrt-Toolchain-ar71xx-for-mips_34kc-gcc-4.8-linaro_uClibc-0.9.33.2/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/include -shared -o sxplugin.so
-```
+4. Git clone and **read** /src/makefile, change the defalut `CC` and `-I`  to your GCC‘s location,and **modify TODO code** in makefile.
 
 5. run `make` in terminal
 
