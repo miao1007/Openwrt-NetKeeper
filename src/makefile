@@ -3,7 +3,7 @@
 
 #TODO:填写gcc中bin与include所在的目录（根目录）
 LOCATION=/home/leon/netkeeper/OpenWrt-Toolchain-ar71xx-for-mips_34kc-gcc-4.8-linaro_uClibc-0.9.33.2/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2
-#TODO:请注意不同型号(mips/mipsel)路由器此处bin文件名可能略有不同
+#TODO:请注意不同型号(mips/mipsel)路由器此处gcc文件名可能略有不同
 CC=$(LOCATION)/bin/mips-openwrt-linux-gcc	
 CFLAGS=-Os -Wall
 
