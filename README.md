@@ -25,7 +25,7 @@ This is an algorithm(C/Linux) to generate the real username during PPPoE. I disa
 7. 河北
 8. 山东移动
 
-See more at [supported radius](https://github.com/Sg4Dylan/Openwrt-NetKeeper/blob/master/src/makefile#L10)
+See more at [supported radius](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/makefile#L10)
 
 ###Features
 1. 算法非常有效率，基于位运行优化，嵌入式设备也能轻松运行；
