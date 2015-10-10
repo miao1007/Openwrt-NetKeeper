@@ -36,18 +36,23 @@ See more at [supported radius](https://github.com/miao1007/Openwrt-NetKeeper/blo
 ###Before Start
 * Install a 64-bit Ubuntu(14.04) on your PC or Virtual-Machine
 
-##Getting Start
+###Getting Start
 Samples for MTK7620A in ChongQing
 
-####Download cross-compile gcc
+####1. Download cross-compile gcc
 ```
 wget https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
 tar -xjf https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
 ##git clone source code
 git clone https://github.com/miao1007/Openwrt-NetKeeper.git
 
-##read and edit makefile and confnetwork.sh carefully
+```
 
+####2. Config
+Read and edit makefile and confnetwork.sh `TODOS` carefully
+
+####3. Upload
+```
 ##make
 cd Openwrt-NetKeeper/src/
 make all
@@ -55,7 +60,7 @@ make all
 make upload
 ```
 
-##config router
+####4. Config router
 ssh into the router and run the script
 
 ```

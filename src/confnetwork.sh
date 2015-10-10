@@ -1,11 +1,11 @@
 #!bin/sh
-#this is a sample for Netkeeper in Chongqing
+#this is a sample for Netkeeper in Chongqing on OpenWRT
 uci set network.netkeeper=interface
 uci set network.netkeeper.proto='pppoe'
 uci set network.netkeeper.ifname='eth0.2'
-#set your province's plugin name
+#TODO:set your province's plugin name
 uci set network.netkeeper.pppd_options='plugin chongqing_sxplugin.so'
-#set pppoe account and password
+#TODO:set pppoe account and password
 uci set network.netkeeper.username='153xxxx'
 uci set network.netkeeper.password='xxxxx'
 uci set network.netkeeper.metric='0'
