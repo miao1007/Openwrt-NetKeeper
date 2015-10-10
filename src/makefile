@@ -1,11 +1,12 @@
 #download latest GCC in https://github.com/miao1007/Openwrt-NetKeeper/wiki#2-%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BDgcc
-#This is a demo for Netgear WNDR3800(AR71XX)
+#This is a demo for MTK7620A
 
 #TODO:填写gcc中bin与include所在的目录（根目录）
 LOCATION=../../OpenWrt-Toolchain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2
 #TODO:请注意不同型号(mips/mipsel)路由器此处gcc文件名可能略有不同
 CC=$(LOCATION)/bin/mipsel-openwrt-linux-gcc
-CFLAGS=-Os -Werror -I$(LOCATION)/include -fPIC
+#TODO:可能需要修改pppd的版本，取决于路由器的/usr/lib/pppd/，目前主流的14.09是2.4.7
+CFLAGS=-Os -Werror -I$(LOCATION)/include -fPIC -DPPPOE_VER='"2.4.7"'
 
 # TODO: change RADIUS
 # 
@@ -27,12 +28,15 @@ CFLAGS=-Os -Werror -I$(LOCATION)/include -fPIC
 # Others: '\n'
 
 all:chongqing_sxplugin wuhan_sxplugin hangzhou_sxplugin nanchang_sxplugin qinghai_sxplugin shandongmobile_sxplugin hebei_sxplugin shandongmobile_sxplugin hainan_sxplugin
-	@echo "file generated successfully!"
-	@ls -l *.so
+	@find *.so
+	@echo "拨号组件编译成功，注意修改confnetwork.sh的sxplugin名称为本省的名称，以及拨号帐号与密码!，然后运行make upload"
 
-#2.4.7 or 2.4.8, depends on your OS
+#pppd version: 2.4.7 or 2.4.8, depends on your OS
+#you can also upload only your province's so file
 upload:
 	scp *.so root@192.168.1.1:/usr/lib/pppd/2.4.7/
+	scp confnetwork.sh root@192.168.1.1:/tmp/
+	ssh root@192.168.1.1
 
 chongqing_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"xianxinli1radius"'  -DPREFIX1="'\n'" -shared -o $@.so
