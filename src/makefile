@@ -2,9 +2,9 @@
 #This is a demo for Netgear WNDR3800(AR71XX)
 
 #TODO:填写gcc中bin与include所在的目录（根目录）
-LOCATION=/home/leon/netkeeper/OpenWrt-Toolchain-ar71xx-for-mips_34kc-gcc-4.8-linaro_uClibc-0.9.33.2/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2
+LOCATION=../../OpenWrt-Toolchain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2
 #TODO:请注意不同型号(mips/mipsel)路由器此处gcc文件名可能略有不同
-CC=$(LOCATION)/bin/mips-openwrt-linux-gcc	
+CC=$(LOCATION)/bin/mipsel-openwrt-linux-gcc
 CFLAGS=-Os -Werror -I$(LOCATION)/include -fPIC
 
 # TODO: change RADIUS
@@ -29,6 +29,10 @@ CFLAGS=-Os -Werror -I$(LOCATION)/include -fPIC
 all:chongqing_sxplugin wuhan_sxplugin hangzhou_sxplugin nanchang_sxplugin qinghai_sxplugin shandongmobile_sxplugin hebei_sxplugin shandongmobile_sxplugin hainan_sxplugin
 	@echo "file generated successfully!"
 	@ls -l *.so
+
+#2.4.7 or 2.4.8, depends on your OS
+upload:
+	scp *.so root@192.168.1.1:/usr/lib/pppd/2.4.7/
 
 chongqing_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"xianxinli1radius"'  -DPREFIX1="'\n'" -shared -o $@.so
