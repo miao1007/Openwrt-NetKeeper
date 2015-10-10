@@ -64,7 +64,7 @@ See more at [supported radius](https://github.com/miao1007/Openwrt-NetKeeper/blo
 		config interface 'NetKeeper'
         	option proto 'pppoe'
         	option ifname 'eth0.2'
-        	option pppd_options 'plugin sxplugin.so'
+        	option pppd_options 'plugin [sxplugin.so](修改此文件名)'
         	option username 'phone number'
         	option password 'xxxxx'
         	option metric '0'
