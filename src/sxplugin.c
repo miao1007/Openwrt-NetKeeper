@@ -5,27 +5,7 @@
 //TODO : you may obtaion it by git clone https://github.com/squadette/pppd.git
 #include "pppd.h"
 #include "md5.h"
-//attention: typeof(RADIUS) == `const char []`
-//TODO: change your radius here
-/*
-* ChongQing Netkeeper: cqxinliradius002
-* ChongQing Netkeeper(0094): xianxinli1radius
-* WuHan E xin: hubtxinli01
-* Hangzhou(Tested on HDU): singlenet01
-* NanChangV18: nanchang3.0
-* NanChangV12~V17: radius
-* NanChangV29: nanchang3.0
-* NanChangV32: jiangxi4.0
-* QingHai: qhtel@xiaoyuanyi
-* hebei: hebeicncxinli002
-* ShanDong Mobile : shandongmobile13
-**/
-#define RADIUS "hebeicncxinli002"
 #define PREFIX0 '\r'
-//TODO: Change code here
-//NanChangV32: '1'
-//Others: '\n'
-#define PREFIX1 '\n'
 typedef unsigned char byte;
 //TODO : change the version here
 char pppd_version[] = "2.4.7";
