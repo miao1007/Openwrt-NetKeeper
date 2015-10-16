@@ -34,31 +34,39 @@ See more at [supported radius](https://github.com/miao1007/Openwrt-NetKeeper/blo
 4. 支持原厂OpenWrt、PandoraBox（但并不推荐）。
 
 ###Before Start
-* Install a 64-bit Ubuntu on your PC or Virtual-Machine
-* Download the [Lastest GCC](https://github.com/miao1007/Openwrt-NetKeeper/wiki#2-%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BDgcc)
-
-
+* Install a 64-bit Ubuntu(14.04) on your PC or Virtual-Machine
 
 ###Getting Start
+Samples for MTK7620A in ChongQing
 
-1. Git clone and **read** the code. Remember to **modify TODO code** in source code.
+####1. Download cross-compile gcc
+```
+wget https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
+tar -xjf https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
+##git clone source code
+git clone https://github.com/miao1007/Openwrt-NetKeeper.git
 
-1. Unzip the GCC to anywhere
-		
-4. Git clone and **read** /src/makefile, change the defalut `CC` and `-I`  to your GCC‘s location,and **modify TODO code** in makefile.
+```
 
-5. run `make` in terminal
+####2. Config
+Read and edit makefile and confnetwork.sh `TODOS` carefully
 
-3. Upload your "sxplugin.so"
+####3. Upload
+```
+##make
+cd Openwrt-NetKeeper/src/
+make all
+##ssh password for router is required
+make upload
+```
 
-		scp  {drag your `.so` file here}   root@192.168.1.1:/usr/lib/pppd/2.4.7/
+####4. Config router
+ssh into the router and run the script
 
-4. Configure your router
+```
+sh /tmp/confnetwork.sh ```
 
-		ssh root@192.168.1.1
-		vi /etc/config/network
-
-
+<<<<<<< HEAD
 	To configure your wan interface
 	
 		config interface 'NetKeeper'
@@ -72,11 +80,17 @@ See more at [supported radius](https://github.com/miao1007/Openwrt-NetKeeper/blo
 5. sync your router's time.
 
 6. reconnect your NetKeeper interface in Luci
+=======
+finially sync your router's time and reconnect your NetKeeper interface  in browser
+>>>>>>> refs/heads/miao1007-master
 
 ##Troubleshooting
 
 1. Search wiki before ask question <https://github.com/miao1007/Openwrt-NetKeeper/wiki>
 2. Submit new [issue](https://github.com/miao1007/Openwrt-NetKeeper/issues/new) with your log in OpenWRT.
+
+##TODO
+add js script for timesync
 
 ##Acknowledgements
 * [NETKEEPER ON WINDOWS](http://www.purpleroc.com/html/507231.html)
@@ -84,6 +98,7 @@ See more at [supported radius](https://github.com/miao1007/Openwrt-NetKeeper/blo
 
 ##Developed By
 Leon - <miao1007@gmail.com>
+
 
 ##License
 

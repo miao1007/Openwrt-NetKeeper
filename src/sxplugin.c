@@ -8,7 +8,7 @@
 #define PREFIX0 '\r'
 typedef unsigned char byte;
 //TODO : change the version here
-char pppd_version[] = "2.4.7";
+char pppd_version[] = PPPOE_VER;
 
 static char saveuser[MAXNAMELEN] = {0};
 static char savepwd[MAXSECRETLEN] = {0};
@@ -30,7 +30,7 @@ static void getPIN(byte *userName, byte *PIN)
     byte PIN27[6]; //time encryption from timeHash
     timenow = time(NULL);
     info("-------------------------------------");
-    info("timenow(Hex)=%ßx\n",timenow);
+    info("timenow(Hex)=%x\n",timenow)
     timedivbyfive = timenow / 5;
 
     for(i = 0; i < 4; i++) {
