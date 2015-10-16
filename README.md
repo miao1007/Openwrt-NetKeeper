@@ -66,7 +66,23 @@ ssh into the router and run the script
 ```
 sh /tmp/confnetwork.sh ```
 
+<<<<<<< HEAD
+	To configure your wan interface
+	
+		config interface 'NetKeeper'
+        	option proto 'pppoe'
+        	option ifname 'eth0.2'
+        	option pppd_options 'plugin <strong style="background:red">sxplugin.so</strong>'
+        	option username 'phone number'
+        	option password 'xxxxx'
+        	option metric '0'
+    
+5. sync your router's time.
+
+6. reconnect your NetKeeper interface in Luci
+=======
 finially sync your router's time and reconnect your NetKeeper interface  in browser
+>>>>>>> refs/heads/miao1007-master
 
 ##Troubleshooting
 
