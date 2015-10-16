@@ -30,7 +30,7 @@ static void getPIN(byte *userName, byte *PIN)
     byte PIN27[6]; //time encryption from timeHash
     timenow = time(NULL);
     info("-------------------------------------");
-	info("timenow(Hex)=%x\n", timenow);
+    info("timenow(Hex)=%x\n",timenow)
     timedivbyfive = timenow / 5;
 
     for(i = 0; i < 4; i++) {
