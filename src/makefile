@@ -23,6 +23,8 @@ CFLAGS=-Os -Werror -I$(LOCATION)/include -fPIC -DPPPOE_VER='"${PPPD_VER}"'
 # hebei: hebeicncxinli002
 # ShanDong Mobile : shandongmobile13
 # Shanxi Yixun : sh_xi@xiaoyuan01
+# ShanDong Telecome : 560Ox!a0yuanOlIz  (For 3.7.3 Augest Version)
+# ShanDong Telecome : shdOx!a0yuan01lz  (For 3.7.3 October 27th Version)
 
 # TODO: Change PREFIX1
 # 
@@ -57,7 +59,6 @@ nanchang_sxplugin:
 qinghai_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"qhtel@xiaoyuanyi"' -DPREFIX1="'\n'" -shared -o $@.so
 
-
 shandongmobile_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"shandongmobile13"' -DPREFIX1="'\n'" -shared -o $@.so
 
@@ -66,6 +67,12 @@ hebei_sxplugin:
 	
 shanxi_yixun_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"sh_xi@xiaoyuan01"' -DPREFIX1="'\n'" -shared -o $@.so
+
+shandong_telecom_aug_sxplugin:
+	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"560Ox!a0yuanOlIz"' -DPREFIX1="'\n'" -shared -o $@.so
+	
+shandong_telecom_oct_sxplugin:
+	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"shdOx!a0yuan01lz"' -DPREFIX1="'\n'" -shared -o $@.so
 
 hainan_sxplugin:
 	@$(CC) $(CFLAGS) hainan_sxplugin.c -shared -o $@.so
