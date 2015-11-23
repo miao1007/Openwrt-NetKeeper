@@ -1,4 +1,4 @@
-#Openwrt-NetKeeper 闪讯拨号for OpenWRT
+#Openwrt-NetKeeper 闪讯拨号for OpenWrt
 
 
 ###简述
@@ -34,7 +34,7 @@
 ##配置安装
 
 ###准备工作
-* 请安装一个64位的Ubuntu(14.04) 系统 （虚拟机也可以）
+* 请安装一个64位的Ubuntu(推荐[14.04](http://releases.ubuntu.com/14.04/)) 系统 （虚拟机也可以）
 
 ###开始安装
 以重庆地区MTK7620A方案路由器为例
@@ -44,8 +44,10 @@
 ```
 wget https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
 tar -xjf https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
+```
 
-##git clone source code
+##克隆项目到本地
+```
 git clone https://github.com/miao1007/Openwrt-NetKeeper.git
 
 ```
@@ -71,7 +73,7 @@ sh /tmp/confnetwork.sh
 
 ##疑难问题
 
-1. 请先在wiki中查找答案 <https://github.com/miao1007/Openwrt-NetKeeper/wiki>
+1. 请先在[wiki](https://github.com/miao1007/Openwrt-NetKeeper/wiki)中查找答案
 2. 提交新的[issue](https://github.com/miao1007/Openwrt-NetKeeper/issues/new) （请附上系统日志）
 
 
