@@ -1,7 +1,7 @@
 #download latest GCC in https://github.com/miao1007/Openwrt-NetKeeper/wiki#2-%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BDgcc
 #This is a demo for MTK7620A
 
-#TODO:填写gcc中bin与include所在的目录（根目录）
+#TODO:填写解压的Toolchain中bin与include所在的目录（根目录）,某些奇葩可能用的是glibc，这里可能要替换LIBC
 LOCATION=../../OpenWrt-Toolchain-ramips-for-mipsel_24kec+dsp-gcc-4.8-linaro_uClibc-0.9.33.2/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2
 #TODO:请注意不同型号(mips/mipsel)路由器此处gcc文件名可能略有不同
 CC=$(LOCATION)/bin/mipsel-openwrt-linux-gcc

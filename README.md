@@ -1,19 +1,13 @@
 #Openwrt-NetKeeper
 
 [中文说明](/README-CN.md)
-###Overview
 
 This is an algorithm(C/Linux) to generate the real username during PPPoE. I disassembled the code from the Android version , modified it to run the algorithm on OpenWRT.
 
 Click [here](http://www.right.com.cn/forum/thread-141979-1-1.html) to see BBS topic.
 
-
-###How Does It Work
 ![How does it work](mdassets/hownetkeeperwork.png)
 
-###Supported Province
-
-See all suppported provinces at [supported radius](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/makefile#L10)
 
 ###Features
 1. Efficiency algorithm, specially optimized for embedded system.
@@ -21,43 +15,61 @@ See all suppported provinces at [supported radius](https://github.com/miao1007/O
 3. Auto-fit all kinds of username input.
 4. Support both OpenWRT and PandoraBox(not recommend).
 
-###Before Start
-* Install a 64-bit Ubuntu(recommend [14.04](http://releases.ubuntu.com/14.04/)) on your PC or Virtual-Machine
 
-###Getting Start
-Samples for MTK7620A in ChongQing
+###Supported Province
 
-####1. Download cross-compile gcc
-on your Ubuntu device:
+See all suppported provinces at [supported radius](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/makefile#L10)
+
+##Download
+[Latest sxplugin.so](https://github.com/miao1007/Openwrt-NetKeeper/releases)
+
+
+
+##Compile from source code
+
+As a prerequisite you should setup a 64-bit Ubuntu(recommend [14.04](http://releases.ubuntu.com/14.04/)) with its dependencies.
+
+####1. Get the source code on your machine:
+
 ```
-wget https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
-tar -xjf https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
-
-##git clone source code
-git clone https://github.com/miao1007/Openwrt-NetKeeper.git
-
+git clone --depth=1 https://github.com/miao1007/Openwrt-NetKeeper.git
 ```
 
-####2. Config
-Read and edit makefile and confnetwork.sh `TODOS` carefully
+####2. Get Toolchain
 
-####3. Upload
+download latest [Toolchain](https://github.com/miao1007/Openwrt-NetKeeper/wiki#2-%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BDgcc)
+
 ```
-##make
+#this is a sample for mipsel(Little Endian) device
+wget https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2 | tar -xjf 
+```
+
+####3. Config
+Read and edit `makefile` and `confnetwork.sh` **TODOS** carefully
+
+####4. Compile
+	
+
+```
 cd Openwrt-NetKeeper/src/
 make all
-##ssh password for router is required
+```
+
+##Config router
+
+You can use my script to upload
+
+```
 make upload
 ```
 
-####4. Config router
-ssh into the router and run the script
+then ssh into the router and run the script
 
 ```
 sh /tmp/confnetwork.sh 
 ```
 
-finially sync your router's time and reconnect your NetKeeper interface  in browser
+finially sync your router's time and reconnect your NetKeeper interface in browser
 
 ##Troubleshooting
 
