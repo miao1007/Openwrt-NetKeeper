@@ -19,7 +19,8 @@ CFLAGS=-Os -Werror -I$(LOCATION)/include -fPIC -DPPPOE_VER='"${PPPD_VER}"'
 # NanChangV12~V17: radius
 # NanChangV29: nanchang3.0
 # NanChangV32: jiangxi4.0
-# QingHai: qhtel@xiaoyuanyi
+# Xinjiang/qinghai 3.6.27: qhtel@xiaoyuanyi
+# Xinjiang/qinghai 3.7.3 : xinjiang@0724
 # hebei: hebeicncxinli002
 # ShanDong Mobile : shandongmobile13
 # Shanxi Yixun : sh_xi@xiaoyuan01
@@ -32,7 +33,7 @@ CFLAGS=-Os -Werror -I$(LOCATION)/include -fPIC -DPPPOE_VER='"${PPPD_VER}"'
 # NanChangV32: '1'
 # Others: '\n'
 
-all:chongqing_sxplugin wuhan_sxplugin hangzhou_sxplugin nanchang_sxplugin qinghai_sxplugin shandongmobile_sxplugin hebei_sxplugin shandongmobile_sxplugin shanxi_yixun_sxplugin gansu_telecom_sxplugin shandong_telecom_aug_sxplugin shandong_telecom_oct_sxplugin hainan_sxplugin 
+all:chongqing_sxplugin wuhan_sxplugin hangzhou_sxplugin nanchang_sxplugin xinjiang_qinghai_sxplugin shandongmobile_sxplugin hebei_sxplugin shandongmobile_sxplugin shanxi_yixun_sxplugin gansu_telecom_sxplugin shandong_telecom_aug_sxplugin shandong_telecom_oct_sxplugin hainan_sxplugin 
 	@find *.so
 	@echo "拨号组件编译成功，注意修改confnetwork.sh的sxplugin名称为本省的名称，以及拨号帐号与密码!，然后运行make upload"
 
@@ -57,8 +58,8 @@ hangzhou_sxplugin:
 nanchang_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"jiangxi4.0"' -DPREFIX1="'1'" -shared -o $@.so
 
-qinghai_sxplugin:
-	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"qhtel@xiaoyuanyi"' -DPREFIX1="'\n'" -shared -o $@.so
+xinjiang_qinghai_sxplugin:
+	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"xinjiang@0724"' -DPREFIX1="'\n'" -shared -o $@.so
 
 shandongmobile_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"shandongmobile13"' -DPREFIX1="'\n'" -shared -o $@.so
