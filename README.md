@@ -51,7 +51,7 @@ finially sync your router's time and reconnect your NetKeeper interface in brows
 
 
 ##Development
-This is for advanced development only.
+This is for advanced development only. You can use Coding.net's WorkSpace to compile the binary
 
 ###1. Compile from source code
 
@@ -71,8 +71,11 @@ or use script
 
 ```
 #this is a sample for mipsel(Little Endian) device
-wget https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2 | tar -xjf 
+wget https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2 | tar xj
+#or chinese mirror
+#wget http://mirrors.ustc.edu.cn/openwrt/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2 -O - | tar xj
 ```
+
 
 ####1.3. Config
 
