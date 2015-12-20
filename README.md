@@ -51,11 +51,11 @@ finially sync your router's time and reconnect your NetKeeper interface in brows
 
 
 ##Development
-This is for advanced development only. You can use Coding.net's WorkSpace to compile the binary
+This is for advanced development only. 
 
 ###1. Compile from source code
 
-As a prerequisite you should setup a 64-bit Ubuntu(recommend [14.04](http://releases.ubuntu.com/14.04/)) with its dependencies.
+As a prerequisite you should setup a 64-bit Ubuntu(recommend [14.04](http://releases.ubuntu.com/14.04/)) with its dependencies. Or you can use [Coding.net's WorkSpace](https://ide.coding.net/) to compile the binary
 
 ####1.1. Get the source code on your machine
 
@@ -71,7 +71,7 @@ or use script
 
 ```
 #this is a sample for mipsel(Little Endian) device
-wget https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2 | tar xj
+wget https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2 -O - | tar xj
 #or chinese mirror
 #wget http://mirrors.ustc.edu.cn/openwrt/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2 -O - | tar xj
 ```
@@ -88,6 +88,16 @@ Read and edit `makefile` and `confnetwork.sh` **TODOS** carefully
 cd Openwrt-NetKeeper/src/
 make all
 ```
+
+####1.5. (Optinal)Download from Cloud
+if using cloud IDE, try
+
+
+```
+tar zcf sxplugin_mipsel.tar *_sxplugin.so
+```
+
+and download.
 
 ###2. Config router
 
