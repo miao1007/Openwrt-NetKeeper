@@ -1,6 +1,7 @@
 #!bin/sh
 #If /etc/config/network file has preconfig wan sittings then delete it.
 uci delete network.wan
+uci delete network.wan6
 uci commit network
 #this is a sample for Netkeeper in Chongqing on OpenWRT
 uci set network.netkeeper=interface
