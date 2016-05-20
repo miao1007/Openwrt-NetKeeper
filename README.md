@@ -127,3 +127,6 @@ Leon - <miao1007@gmail.com>
 
 1. GPL
 2. No **TAOBAO** use
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/miao1007/openwrt-netkeeper/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
