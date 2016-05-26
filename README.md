@@ -20,6 +20,10 @@ Click [here](http://www.right.com.cn/forum/thread-141979-1-1.html) to see BBS to
 
 See all suppported provinces at [supported radius](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/makefile#L10)
 
+### For Changes in Latest Version of Netkeeper (创翼/翼讯/Netkeeper/极速卡/山东移动高校宽带/河北联通)
+
+See [Wiki](https://github.com/miao1007/Openwrt-NetKeeper/wiki/%E5%85%B3%E4%BA%8E%E5%85%A8%E6%96%B0Netkeeper%E5%AE%A2%E6%88%B7%E7%AB%AF)
+
 ##Usage
 
 ####1. Download the Latest release
