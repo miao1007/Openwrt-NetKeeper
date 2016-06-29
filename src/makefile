@@ -15,18 +15,21 @@ CFLAGS=-Os -Werror -I$(LOCATION)/include -fPIC -DPPPOE_VER='"${PPPD_VER}"'
 # ChongQing Netkeeper(0094): xianxinli1radius
 # WuHan E xin: hubtxinli01
 # Hangzhou(Tested on HDU): singlenet01
-# NanChangV18: nanchang3.0
-# NanChangV12~V17: radius
-# NanChangV29: nanchang3.0
-# NanChangV32: jiangxi4.0
-# Xinjiang/qinghai 3.6.27: qhtel@xiaoyuanyi
-# Xinjiang/qinghai 3.7.3 : xinjiang@0724
+# qinghai 3.6.27: shd@xiaoyuan0002
+# Xinjiang 3.7.3 : xinjiang@0724
 # hebei: hebeicncxinli002
 # ShanDong Mobile : shandongmobile13
 # Shanxi Yixun : sh_xi@xiaoyuan01
+# GanSu Telecom 3.7.1 : xiaoyuanyixun001
+
+##  The following radius has been deprecated due to update. No more used.
+#
 # ShanDong Telecom : 560Ox!a0yuanOlIz  (For 3.7.3 Augest Version)
 # ShanDong Telecom : shdOx!a0yuan01lz  (For 3.7.3 October 27th Version)
-# GanSu Telecom 3.7.1 : xiaoyuanyixun001
+# NanChangV12~V17: radius
+# NanChangV18~V29: nanchang3.0
+# NanChangV32: jiangxi4.0
+#
 
 # TODO: Change PREFIX1
 # 
@@ -46,20 +49,23 @@ upload:
 	@echo "正在登录路由器，请在输入路由器ssh密码后，运行sh /tmp/confnetwork.sh"
 	ssh root@192.168.1.1
 
-chongqing_sxplugin:
+chongqing0094_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"xianxinli1radius"'  -DPREFIX1="'\n'" -shared -o $@.so
+	
+chongqing_sxplugin:
+	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"cqxinliradius002"'  -DPREFIX1="'\n'" -shared -o $@.so
 
-wuhan_sxplugin:
+hubei_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"hubtxinli01"' -DPREFIX1="'\n'" -shared -o $@.so
 
-hangzhou_sxplugin:
+zhejiang_xiaoyuan_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"singlenet01"' -DPREFIX1="'\n'" -shared -o $@.so
 
-nanchang_sxplugin:
-	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"jiangxi4.0"' -DPREFIX1="'1'" -shared -o $@.so
-
-xinjiang_qinghai_sxplugin:
+xinjiang_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"xinjiang@0724"' -DPREFIX1="'\n'" -shared -o $@.so
+	
+qinghai_sxplugin:
+	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"shd@xiaoyuan0002"'  -DPREFIX1="'\n'" -shared -o $@.so
 
 shandongmobile_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"shandongmobile13"' -DPREFIX1="'\n'" -shared -o $@.so
@@ -70,16 +76,10 @@ hebei_sxplugin:
 shanxi_yixun_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"sh_xi@xiaoyuan01"' -DPREFIX1="'\n'" -shared -o $@.so
 
-shandong_telecom_aug_sxplugin:
-	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"560Ox!a0yuanOlIz"' -DPREFIX1="'\n'" -shared -o $@.so
-	
-shandong_telecom_oct_sxplugin:
-	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"shdOx!a0yuan01lz"' -DPREFIX1="'\n'" -shared -o $@.so
-	
 gansu_telecom_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"xiaoyuanyixun001"' -DPREFIX1="'\n'" -shared -o $@.so
 
-ningbo_sxplugin:
+zhejiang_qiye_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"zjxinlisx02"' -DPREFIX1="'\n'" -shared -o $@.so
 
 hainan_sxplugin:
