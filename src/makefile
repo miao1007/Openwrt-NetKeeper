@@ -36,7 +36,7 @@ CFLAGS=-Os -Werror -I$(LOCATION)/include -fPIC -DPPPOE_VER='"${PPPD_VER}"'
 # NanChangV32: '1'
 # Others: '\n'
 
-all:chongqing_sxplugin wuhan_sxplugin hangzhou_sxplugin nanchang_sxplugin xinjiang_qinghai_sxplugin shandongmobile_sxplugin hebei_sxplugin shandongmobile_sxplugin shanxi_yixun_sxplugin gansu_telecom_sxplugin shandong_telecom_aug_sxplugin shandong_telecom_oct_sxplugin hainan_sxplugin ningbo_sxplugin 
+all:chongqing_sxplugin chongqing0094_sxplugin hubei_sxplugin zhejiang_xiaoyuan_sxplugin xinjiang_sxplugin qinghai_sxplugin shandongmobile_sxplugin hebei_sxplugin shanxi_yixun_sxplugin gansu_telecom_sxplugin zhejiang_qiye_sxplugin hainan_sxplugin
 	@find *.so
 	@echo "拨号组件编译成功，注意修改confnetwork.sh的sxplugin名称为本省的名称，以及拨号帐号与密码!，然后运行make upload"
 
