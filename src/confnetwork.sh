@@ -1,6 +1,8 @@
 #!bin/sh
 #If /etc/config/network file has preconfig wan sittings then delete it.
-uci delete network.wan
+#To use netkeeper in CQUPT(重邮)or other area, don't execute the following code 'uci delete network.wan'.
+#Interface 'wan6' is used for ipv6 , if your internet doesn't support ipv6,you can delete it.
+#uci delete network.wan
 uci delete network.wan6
 uci commit network
 #this is a sample for Netkeeper in Chongqing on OpenWRT
