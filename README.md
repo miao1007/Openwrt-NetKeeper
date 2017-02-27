@@ -1,5 +1,7 @@
 #Openwrt-NetKeeper
 
+> Search for Ubuntu Version? click [here](https://github.com/Ljqiii/Netkepper-Ubuntu)
+
 [中文说明](./README-CN.md)
 
 This is an algorithm(C/Linux) to generate the real username during PPPoE. I disassembled the code from the Android version , modified it to run the algorithm on OpenWRT.
