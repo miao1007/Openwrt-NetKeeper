@@ -1,7 +1,7 @@
-#Openwrt-NetKeeper 闪讯拨号for OpenWrt
+# Openwrt-NetKeeper 闪讯拨号for OpenWrt
 
 
-###简述
+### 简述
 
 这是一个基于OpenWRT的闪讯拨号算法的实现。通过对Android版的反编译，获得到了拨号流程，并把它移植到OpenWRT上运行，~~实现打破毒瘤电信垄断的效果~~。
 
@@ -13,10 +13,10 @@
 心跳已经通过Android版反编译出来了，不过应该是烂尾了，找工作没时间移植了（用脚本语言发套接字就可以）.... <https://github.com/miao1007/android-netkeeper>
 
 
-###工作原理
+### 工作原理
 ![How does it work](mdassets/hownetkeeperwork.png)
 
-###支持地区
+### 支持地区
 1. 武汉E信
 2. 重庆
 3. 杭州
@@ -28,17 +28,17 @@
 
 查看更多： [supported radius](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/makefile#L10)
 
-###特性
+### 特性
 1. 算法非常有效率，基于位运行优化，嵌入式设备也能轻松运行；
 2. 可移植强，仅有的几个库文件在任何设备均可使用；
 3. 自适应帐号长度，支持带后缀与不带后缀的运算；
 4. 支持原厂OpenWrt、PandoraBox（但并不推荐）。
 
 
-##如何使用
+## 如何使用
 
 
-####1. 下载最新版插件
+#### 1. 下载最新版插件
 
 1. [sxplugin.so](https://github.com/miao1007/Openwrt-NetKeeper/releases)
 2. [confnetwork.sh](https://github.com/miao1007/Openwrt-NetKeeper/blob/master/src/confnetwork.sh)
@@ -47,7 +47,7 @@
 
 
 
-####2. 上传
+#### 2. 上传
 使用scp(windows下可以使用 [WinScp](https://winscp.net/download/winscp576.zip)) 上传
 
 ```
@@ -55,7 +55,7 @@ yourprovince_sxplugin.so -> /usr/lib/pppd/2.4.7/
 confnetwork.sh -> /tmp/
 ```
 
-####3. 配置路由器
+#### 3. 配置路由器
 登陆路由器，执行脚本
 
 ```
@@ -68,20 +68,20 @@ sh /tmp/confnetwork.sh
 
 
 
-##开发
+## 开发
 以下需要了解开发相关技术
 
-###1. 用源码进行编译
+### 1. 用源码进行编译
 
 首先你要准备一个Ubuntu的虚拟机(recommend [14.04](http://releases.ubuntu.com/14.04/)) 作为开发依赖
 
-####1.1. 克隆代码
+#### 1.1. 克隆代码
 
 ```
 git clone --depth=1 https://github.com/miao1007/Openwrt-NetKeeper.git
 ```
 
-####1.2. 下载Toolchain
+#### 1.2. 下载Toolchain
 
 直接下载最新的[Toolchain](https://github.com/miao1007/Openwrt-NetKeeper/wiki#2-%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BDgcc)
 	
@@ -92,11 +92,11 @@ git clone --depth=1 https://github.com/miao1007/Openwrt-NetKeeper.git
 wget https://downloads.openwrt.org/barrier_breaker/14.07/ramips/mt7620a/OpenWrt-Toolchain-ramips-for-mipsel_24kec%2bdsp-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2 | tar -xjf 
 ```
 
-####1.3. 配置
+#### 1.3. 配置
 
 仔细阅读 `makefile` 与 `confnetwork.sh` 中的 **TODO**
 
-####1.4. 编译
+#### 1.4. 编译
 	
 
 ```
@@ -104,7 +104,7 @@ cd Openwrt-NetKeeper/src/
 make all
 ```
 
-###2. 配置路由器
+### 2. 配置路由器
 
 使用此脚本自动配置路由器
 
@@ -112,22 +112,22 @@ make all
 make upload
 ```
 
-##疑难问题
+## 疑难问题
 
 1. 请先在[wiki](https://github.com/miao1007/Openwrt-NetKeeper/wiki)中查找答案
 2. 提交新的[issue](https://github.com/miao1007/Openwrt-NetKeeper/issues/new) （请附上系统日志）
 
 
-##感谢
+## 感谢
 * [NETKEEPER ON WINDOWS](http://www.purpleroc.com/html/507231.html)
 * [CQUPT NETKEEPER](http://bbs.cqupt.edu.cn/nForum/#!article/Unix_Linux/13624)
 * <https://sunflyer.cn/archives/239>
 
-##作者
+## 作者
 Leon - <miao1007@gmail.com>
 
 
-##License
+## License
 
 1. GPL
 2. 勿做**TAOBAO**用途
