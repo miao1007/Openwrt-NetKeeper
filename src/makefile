@@ -78,6 +78,10 @@ shanxi_yixun_sxplugin:
 
 gansu_telecom_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"xiaoyuanyixun001"' -DPREFIX1="'\n'" -shared -o $@.so
+	
+
+ningxia_telecom_sxplugin:
+	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"n_x@xiaoyuanwang"' -DPREFIX1="'\n'" -shared -o $@.so
 
 zhejiang_qiye_sxplugin:
 	@$(CC) $(CFLAGS) sxplugin.c -DRADIUS='"zjxinlisx02"' -DPREFIX1="'\n'" -shared -o $@.so
