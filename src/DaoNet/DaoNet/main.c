@@ -46,6 +46,11 @@ static struct UserConfig {
 #ifdef HEARTBEAT_HUBEI
 //Hubei Telecom Heartbeat using MAC Version 
 //SVR = 58.53.196.172    PORT = 443
+//KEY = xinli_zhejiang12
+//
+//湖北的云心跳的傻逼们，这是你们最后的狂欢
+//请尽情展现你们最不要脸、最可耻、为了金钱丧心病狂无所不作的一面吧
+//呵呵。
 //
 static dao_param dao_params_array[] = {
     {"USER_NAME", user_config.username},
