@@ -43,6 +43,26 @@ static struct UserConfig {
     int interval;
 }user_config;
 
+#ifdef HEARTBEAT_HUBEI
+//Hubei Telecom Heartbeat using MAC Version 
+//SVR = 58.53.196.172    PORT = 443
+//KEY = xinli_zhejiang12
+//
+//湖北的云心跳的傻逼们，这是你们最后的狂欢
+//请尽情展现你们最不要脸、最可耻、为了金钱丧心病狂无所不作的一面吧
+//呵呵。
+//
+static dao_param dao_params_array[] = {
+    {"USER_NAME", user_config.username},
+    {"PASSWORD", user_config.password},
+    {"IP", user_config.ipaddress},
+    {"MAC", "00%2D00%2D00%2D00%2D00%2D00"},
+    {"DRIVER", "1"},
+    {"VERSION_NUMBER", "2.0.4"},
+    {"PIN", "MAC_TEST"},
+    {NULL, NULL}
+   };
+#else
 static dao_param dao_params_array[] = {
     {"USER_NAME", user_config.username},
     {"PASSWORD", user_config.password},
@@ -54,6 +74,8 @@ static dao_param dao_params_array[] = {
     {"IP2", user_config.ipaddress},
     {NULL, NULL}
 };
+#endif
+
 
 void print_usage() {
     fprintf(stdout, "Usage: daonet [OPTIONS]\n");
@@ -157,7 +179,11 @@ size_t generate_packet(dao_param *dao_params_array, const char *key, const char 
     frame_data_len = dao_aes_padding(buffer, frame_data_len, buffer);
     content_data_len = dao_aes_encrypt(&aes, buffer, frame_data_len, buffer);
     
+#ifdef HEARTBEAT_HUBEI
+    dao_protocol_init(&procotol, 20, 0x05);
+#else
     dao_protocol_init(&procotol, 30, 0x05);
+#endif
     dao_protocol_set_content(&procotol, buffer, content_data_len);
 
     return dao_protocol_generate_data(&procotol, output);
