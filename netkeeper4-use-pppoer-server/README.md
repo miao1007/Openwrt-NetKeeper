@@ -25,7 +25,7 @@ opkg install rp-pppoe-server_3.12-1_arm_cortex-a9.ipk
 ```sh
 sh nk4conf.sh
 ```
-#### 4.修改pppoe接口密码为自己的密码，并关闭端口开机自动连接。
+#### 4.关闭端口开机自动连接，重启路由器。
 ### （二）电脑端
 
 1.网线接路由器lan口
@@ -35,8 +35,15 @@ sh nk4conf.sh
 3.这个时候路由器会截取真实账号，并进行拨号。
 
 ## 二、个人测试环境：
-路由器：tenda-ac9 [lede17.01.0](https://downloads.lede-project.org/releases/17.01.0/targets/bcm53xx/generic)固件
+路由器：
+
+tenda-ac9 [lede17.01.0](https://downloads.lede-project.org/releases/17.01.0/targets/bcm53xx/generic)固件
+
+newifi mini [PandoraBox 17.01](http://downloads.pandorabox.com.cn/pandorabox-16-10-stable/targets/ralink/mt7620/)固件
 
 地点：CQUPT
 
-等毕业答辩完了我用newifi mini测一下
+## 三、问题
+1.执行nk4conf.sh脚本后需要先重启路由器。不重启的话可以看到pppoe-server在进程里有，但是没有效果。
+
+2.有时会遇到ppp:Timeout waiting for PADO packets提示。要等一段时间才能拨号。

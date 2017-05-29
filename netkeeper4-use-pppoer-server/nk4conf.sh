@@ -1,22 +1,24 @@
 #!/bin/sh
-#²âÊÔ°æ±¾4.7.9.589£¬@cqupt
+#æµ‹è¯•ç‰ˆæœ¬4.7.9.589ï¼Œ@cqupt
 
-#°²×°pppoe-server
+#å®‰è£…pppoe-server
 #opkg update
 #opkg install rp-pppoe-server
 
-#/etc/ppp/option ¸Ä logfile /dev/null Îª logfile /tmp/pppoe.log
+#/etc/ppp/option æ”¹ logfile /dev/null ä¸º logfile /tmp/pppoe.log
 sed -i "s/dev/tmp/" /etc/ppp/options
 sed -i "s/null/pppoe.log/" /etc/ppp/options
-#pppoe-server´øµÄrp-pppoe.soÎŞ·¨¼ÓÔØ£¬µ÷ÓÃopenwrt×Ô´øµÄrp-pppoe.so
+#pppoe-serverå¸¦çš„rp-pppoe.soæ— æ³•åŠ è½½ï¼Œè°ƒç”¨openwrtè‡ªå¸¦çš„rp-pppoe.so
 cp /etc/ppp/plugins/rp-pppoe.so /etc/ppp/plugins/rp-pppoe.so.bak
 cp /usr/lib/pppd/2.4.7/rp-pppoe.so /etc/ppp/plugins/rp-pppoe.so
-#/etc/ppp/pppoe-server-options ¸Ärequire-papÎªrequire-chap
-sed -i "s/require-pap/require-chap/" /etc/ppp/pppoe-server-options
-#/etc/ppp/chap-secretsÌí¼ÓÒ»¸öÓÃ»§(²»Ìí¼ÓÎŞ·¨ÔËĞĞ)
-echo "test * test *">>/etc/ppp/chap-secrets
+#/etc/ppp/pppoe-server-options æ”¹require-papä¸ºrequire-chap
+#sed -i "s/require-pap/require-chap/" /etc/ppp/pppoe-server-options
+#/etc/ppp/pap-secretsæ·»åŠ ä¸€ä¸ªç”¨æˆ·(ä¸æ·»åŠ æ— æ³•è¿è¡Œ)
+cp /etc/ppp/pap-secrets /etc/ppp/pap-secrets.bak
+sed -i '$d' /etc/ppp/pap-secrets
+echo "test * test *">>/etc/ppp/pap-secrets
 
-#²Î¿¼confnetwork.sh¡£ĞŞ¸Äifname¸ù¾İwan¿ÚÉèÖÃ
+#å‚è€ƒconfnetwork.shã€‚ä¿®æ”¹ifnameæ ¹æ®wanå£è®¾ç½®
 #uci delete network.wan
 uci delete network.wan6
 uci commit network
@@ -37,12 +39,12 @@ uci commit firewall
 /etc/init.d/network reload
 /etc/init.d/network restart
 
-#Ê¹pppoeÖ§³Ö×ªÒå×Ö·û
+#ä½¿pppoeæ”¯æŒè½¬ä¹‰å­—ç¬¦
 cp /lib/netifd/proto/ppp.sh /lib/netifd/proto/ppp.sh_bak
 sed -i '/proto_run_command/i username=`echo -e "$username"`' /lib/netifd/proto/ppp.sh
-sed -i '/proto_run_command/i password=`echo -e "$password"`' /lib/netifd/proto/ppp.sh
+#sed -i '/proto_run_command/i password=`echo -e "$password"`' /lib/netifd/proto/ppp.sh
 
-#ÉèÖÃÆô¶¯½Å±¾
+#è®¾ç½®å¯åŠ¨è„šæœ¬
 cp /root/nk4 /etc/init.d/nk4
 chmod +x /etc/init.d/nk4
 /etc/init.d/nk4 enable
