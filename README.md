@@ -1,9 +1,3 @@
----
-date: 2017-05-29 00:59
-status: draft
-title: Openwrt-NetKeeper
----
-
 # Openwrt-NetKeeper
 
 > Search for Ubuntu Version? click [here](https://github.com/Ljqiii/Netkepper-Ubuntu)

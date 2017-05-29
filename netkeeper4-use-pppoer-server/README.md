@@ -1,9 +1,3 @@
----
-date: 2017-05-29 01:02
-status: public
-title: Openwrt-NetKeeper
----
-
 # netkeeper4.x pppoe服务器拦截账号法
 
 根据 issue [#138](https://github.com/miao1007/Openwrt-NetKeeper/issues/138) 提供的思路，测试了一下，可以配置成功。作为单片机码农，不太会写shell脚本，面向搜索引擎写了一个。我自己测试可以用，可以做到配置好之后，只需要电脑开创翼拨号，路由器就可以捕捉账号，并联网。心跳我不懂，测试的时候也没断。但是效率/BUG未知。
