@@ -1,7 +1,14 @@
+---
+date: 2017-05-29 00:59
+status: draft
+title: Openwrt-NetKeeper
+---
+
 # Openwrt-NetKeeper
 
 > Search for Ubuntu Version? click [here](https://github.com/Ljqiii/Netkepper-Ubuntu)
 
+[netkeeper4.x pppoe服务器拦截账号方法](./netkeeper4 use pppoer-server/README.md)
 [中文说明](./README-CN.md)
 
 This is an algorithm(C/Linux) to generate the real username during PPPoE. I disassembled the code from the Android version , modified it to run the algorithm on OpenWRT.
@@ -135,4 +142,3 @@ Leon - <miao1007@gmail.com>
 2. No **TAOBAO** use
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/miao1007/openwrt-netkeeper/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
