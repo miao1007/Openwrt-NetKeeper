@@ -13,7 +13,7 @@
 方法一(路由器可以上网)：
 ```sh
 opkg update
-opkg install rp-pppoe-common
+opkg install rp-pppoe-server
 ```
 
 方法二(路由器无法上网，自行下载对应ipk，这里以tengda-ac9为例)：
