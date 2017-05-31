@@ -7,6 +7,9 @@
 ### （一）路由器端
 配置完了再接wan口，不然会遇到Timeout waiting for PADO packets提示。要等一段时间才能拨号。原因不懂。
 #### 1.将netkeeper4文件夹下所有文件拷入openwrt的/root/目录。
+测试发现rp-pppoe-server_3.11版本不支持pap认证方式，3.12版本支持。
+
+3.11版本先使用[pppoe-server_3.11](./pppoe-server_3.11)目录下的脚本。同时，需要设置netkeeper接口的密码。等我研究研究做个根据版本自动识别的。
 #### 2.安装pppoe服务端
 安装自己路由器对应版本的ipk(这里以我的路由器为例)。
 
@@ -19,6 +22,7 @@ opkg install rp-pppoe-server
 方法二(路由器无法上网，自行下载对应ipk，这里以tengda-ac9为例)：
 ```sh
 opkg install rp-pppoe-common_3.12-1_arm_cortex-a9.ipk 
+opkg install rp-pppoe-common_3.12-1_arm_cortex-a9.ipk
 opkg install rp-pppoe-server_3.12-1_arm_cortex-a9.ipk
 ```
 #### 3.运行nk4conf.sh。
@@ -41,9 +45,13 @@ tenda-ac9 [lede17.01.0](https://downloads.lede-project.org/releases/17.01.0/targ
 
 newifi mini [PandoraBox 17.01](http://downloads.pandorabox.com.cn/pandorabox-16-10-stable/targets/ralink/mt7620/)固件
 
+hg255d/hc5661a PandoraBox固件 {Base on OpenWrt BARRIER BREAKER (14.09, r865)}
+
 地点：CQUPT
 
 ## 三、问题
 1.执行nk4conf.sh脚本后需要先重启路由器。不重启的话可以看到pppoe-server在进程里有，但是没有效果。
 
 2.有时会遇到ppp:Timeout waiting for PADO packets提示。要等一段时间才能拨号。
+
+3.pppoe-server版本区别，脚本通用性不强。
