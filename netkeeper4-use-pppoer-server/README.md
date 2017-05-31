@@ -21,7 +21,6 @@ opkg install rp-pppoe-server
 
 方法二(路由器无法上网，自行下载对应ipk，这里以tengda-ac9为例)：
 ```sh
-opkg install rp-pppoe-common_3.12-1_arm_cortex-a9.ipk 
 opkg install rp-pppoe-common_3.12-1_arm_cortex-a9.ipk
 opkg install rp-pppoe-server_3.12-1_arm_cortex-a9.ipk
 ```
