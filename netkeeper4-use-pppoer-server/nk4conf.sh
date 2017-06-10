@@ -12,6 +12,9 @@ sed -i "s/\/dev\/null/\/tmp\/pppoe.log/" /etc/ppp/options
 sed -i "s/#debug/debug/" /etc/ppp/options
 echo "show-password" >> /etc/ppp/options
 
+cp /etc/ppp/plugins/rp-pppoe.so /etc/ppp/plugins/rp-pppoe.so.bak
+cp /usr/lib/pppd/2.4.7/rp-pppoe.so /etc/ppp/plugins/rp-pppoe.so
+
 #set network
 uci delete network.wan6
 uci commit network
