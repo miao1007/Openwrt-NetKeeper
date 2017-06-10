@@ -27,16 +27,14 @@ do
         ifup netkeeper
         username_old="$username"
         logger -t nk4 "new username $username"
-        
-        sleep 5
     fi
     
+    sleep 10
+
     #close pppoe if log fail
     if [ -z "$(ifconfig | grep "netkeeper")" ]
     then
         ifdown netkeeper
     fi
-    
-    sleep 10
 
 done
