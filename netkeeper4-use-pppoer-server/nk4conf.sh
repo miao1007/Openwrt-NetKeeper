@@ -26,6 +26,7 @@ uci set network.netkeeper.proto=pppoe
 uci set network.netkeeper.username=username
 uci set network.netkeeper.password=password
 uci set network.netkeeper.metric='0'
+uci set network.netkeeper.auto='0'
 uci commit network
 
 #set firewall
