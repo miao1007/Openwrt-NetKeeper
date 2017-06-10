@@ -1,27 +1,40 @@
 #!/bin/sh
-#启动pppoe服务器。TODO：检测是否有pppoe服务器进程，再启动
-sleep 1
+
+#start pppoe-server
+if [ -n "$(ps | grep pppoe-server | grep -v grep)" ]
+then
+    killall pppoe-server
+fi
 pppoe-server -k -I br-lan
 
-#删掉之前的log，加快读取速度
-rm /tmp/pppoe.log
+#clear logs
+cat /dev/null > /tmp/pppoe.log
 
 while :
 do
-#读取log最后一个账号
-    username=$(grep "network.wan.username" /tmp/pppoe.log  | tail -n 1 | cut -b 66-)
+    #read the last username in pppoe.log
+    if [ "$(grep 'user=' /tmp/pppoe.log | grep 'rcvd' | tail -n 1 | cut -d \" -f 5)" == "]" ]
+    then
+        username=$(grep 'user=' /tmp/pppoe.log | grep 'rcvd' | tail -n 1 | cut -d \" -f 2)
+    fi
 
     if [ "$username" != "$username_old" ]
     then
         ifdown netkeeper
-        uci set network.netkeeper.username="\r$username"
-        uci set network.netkeeper.password="$(grep "network.wan.password" /tmp/pppoe.log  | tail -n 1 | cut -b 64-)"
+        uci set network.netkeeper.username="$username"
+        uci set network.netkeeper.password="$(grep 'user=' /tmp/pppoe.log | grep 'rcvd' | tail -n 1 | cut -d \" -f 4)"
         uci commit
         ifup netkeeper
         username_old="$username"
-        echo "new username $username"
+        logger -t nk4 "new username $username"
     fi
-#    echo "wait"
+    
     sleep 10
+
+    #close pppoe if log fail
+    if [ -z "$(ifconfig | grep "netkeeper")" ]
+    then
+        ifdown netkeeper
+    fi
 
 done

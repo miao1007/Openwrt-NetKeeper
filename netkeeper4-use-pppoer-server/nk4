@@ -6,6 +6,6 @@ STOP=15
 start()
 
 {
-    sh /root/nk4.sh &
-    echo "netkeeper start"
+    (sh /root/nk4.sh &)
+    logger -t nk4 "netkeeper listen start"
 }
