@@ -7,24 +7,34 @@ then
 fi
 pppoe-server -k -I br-lan
 
-regexp="rcvd \[PAP AuthReq id=0xf user=\"(.*)\" password=\"(.*)\"\]"
-handleLog(){
-  while read data; do
-    if [[ $data =~ $regexp ]];then
-        username="${BASH_REMATCH[1]}"
-        password="${BASH_REMATCH[2]}"
-        if [ "$username" != "$username_old" ]
-        then
-            ifdown netkeeper
-            uci set network.netkeeper.username="$username"
-            uci set network.netkeeper.password="$password"
-            uci commit
-            ifup netkeeper
-            username_old="$username"
-            logger -t nk4 "new username $username"
-        fi
-    fi
-  done
-}
+#clear logs
+cat /dev/null > /tmp/pppoe.log
 
-tail -f -n 1 /tmp/pppoe.log  | handleLog
+while :
+do
+    #read the last username in pppoe.log
+    if [ "$(grep 'user=' /tmp/pppoe.log | grep 'rcvd' | tail -n 1 | cut -d \" -f 5)" == "]" ]
+    then
+        username=$(grep 'user=' /tmp/pppoe.log | grep 'rcvd' | tail -n 1 | cut -d \" -f 2)
+    fi
+
+    if [ "$username" != "$username_old" ]
+    then
+        ifdown netkeeper
+        uci set network.netkeeper.username="$username"
+        uci set network.netkeeper.password="$(grep 'user=' /tmp/pppoe.log | grep 'rcvd' | tail -n 1 | cut -d \" -f 4)"
+        uci commit
+        ifup netkeeper
+        username_old="$username"
+        logger -t nk4 "new username $username"
+    fi
+    
+    sleep 10
+
+    #close pppoe if log fail
+    if [ -z "$(ifconfig | grep "netkeeper")" ]
+    then
+        ifdown netkeeper
+    fi
+
+done
