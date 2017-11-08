@@ -50,12 +50,12 @@ static void getPIN(byte *userName, byte *PIN)
     //beforeMD5={time encryption(4)}+{user name(11)}+{RADIUS}+'\0';default length in ChongQing is 31
     memcpy(beforeMD5 + i , RADIUS, strlen(RADIUS));
     info("3.<%s>",beforeMD5);
-    info("4.length=<%d>",strlen(beforeMD5));
+    info("4.length=<%d>",strlen(RADIUS) + 15);
     info("End : beforeMD5");
     //afterMD5
     info("Begin : afterMD5");
     MD5_Init(&md5);
-    MD5_Update (&md5, beforeMD5, strlen(beforeMD5));
+    MD5_Update (&md5, beforeMD5, strlen(RADIUS) + 15);
     MD5_Final (afterMD5, &md5);//generate MD5 sum
     MD501H[0] = afterMD5[0] >>4& 0xF;//get MD5[0]
     MD501H[1] = afterMD5[0] & 0xF;//get MD5[1]
