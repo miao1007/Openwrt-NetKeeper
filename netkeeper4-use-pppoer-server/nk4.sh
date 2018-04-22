@@ -10,6 +10,11 @@ pppoe-server -k -I br-lan
 #clear logs
 cat /dev/null > /tmp/pppoe.log
 
+sleep 15 # wait 15s for reboot, or it will throw error for 'you have accessed in'
+logger -t nk4 "try to login at power on"
+ifdown netkeeper
+ifup netkeeper
+
 while :
 do
     #read the last username in pppoe.log
