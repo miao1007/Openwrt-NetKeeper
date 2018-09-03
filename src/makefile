@@ -92,6 +92,9 @@ zhejiang_qiye_sxplugin:
 hainan_sxplugin:
 	@$(CC) $(CFLAGS) hainan_sxplugin.c -shared -o $@.so
 
+chongqing_sxplugin4:
+	@$(CC) $(CFLAGS) sxplugin4.c -DRADIUS='"xianxinli1radiusGJxDpkZLtSEFarOM"' -DPREFIX1="'1'" -shared -o $@.so
+
 #clean *.so 
 clean:
 	rm *.so
