@@ -20,7 +20,7 @@ uci delete network.wan6
 uci commit network
 
 uci set network.netkeeper=interface
-uci set network.netkeeper.ifname=$(uci show network.wan.ifname | awk -F "'" '{print $2}')
+uci set network.netkeeper.ifname=$(uci show network.wan.device | awk -F "'" '{print $2}')
 uci set network.netkeeper.proto=pppoe
 uci set network.netkeeper.username=username
 uci set network.netkeeper.password=password
